@@ -1,5 +1,6 @@
 package com.example.duanquanlysach;
 
+import ConnectionDatabase.ConnectionDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,8 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        connectionDatabase.connection();
     }
 
     public static void main(String[] args) {
