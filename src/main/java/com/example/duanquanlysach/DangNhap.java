@@ -1,15 +1,26 @@
 package com.example.duanquanlysach;
 
 import ConnectionDatabase.ConnectionDatabase;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class DangNhap {
     @FXML
@@ -47,8 +58,12 @@ public class DangNhap {
                     String trangThai = resultSet_MatKhau.getString("TrangThai");
                     if (trangThai.equalsIgnoreCase("On")) {
                         if (role.equalsIgnoreCase("Quản Lý")) {
-                            System.out.println("Đăng nhập vào màn hình quản lý");
+                            tenDangNhap.clear();
+                            matKhau.clear();
                             saiMatKhau.setText("");
+
+                            thongBao();
+                            chuyenManHinhAdmin();
                         } else {
                             System.out.println("Đăng nhập vào màn hình người dùng");
                             saiMatKhau.setText("");
@@ -65,9 +80,33 @@ public class DangNhap {
             }
             connection.close();
 
-        } catch (
-                SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+
+    private void chuyenManHinhAdmin() throws IOException {
+        Stage stage = (Stage) tenDangNhap.getScene().getWindow();
+
+        Parent adminRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GiaoDienAdmin.fxml")));
+        Scene adminScene = new Scene(adminRoot);
+
+        stage.setScene(adminScene);
+    }
+
+    private void thongBao() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Đăng nhập thành công");
+        alert.setHeaderText(null);
+        alert.setContentText("Đăng nhập thành công!");
+
+        alert.show();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> alert.hide()));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
 }
