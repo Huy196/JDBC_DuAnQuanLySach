@@ -69,9 +69,9 @@ public class DangNhap {
                             saiMatKhau.setText("");
                         }
                     } else {
-                        saiMatKhau.setText("Sai thông tin đăng nhập !");
                     }
                 } else {
+                    saiMatKhau.setText("Sai thông tin đăng nhập !");
                     matKhau.requestFocus();
                 }
             } else {
@@ -104,7 +104,7 @@ public class DangNhap {
 
         alert.show();
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> alert.hide()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> alert.hide()));
         timeline.setCycleCount(1);
         timeline.play();
     }
