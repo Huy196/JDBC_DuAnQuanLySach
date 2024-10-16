@@ -55,7 +55,7 @@ public class DangNhap {
                     matKhau.requestFocus();
                 }
             } else {
-                saiMatKhau.setText("Sai thông tin đăng nhập !");
+                saiMatKhau.setText("Incorrect login information!");
                 tenDangNhap.requestFocus();
             }
             connection.close();
