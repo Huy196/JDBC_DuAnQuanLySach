@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="667.0" prefWidth="1331.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.HelloController">
+<HBox prefHeight="667.0" prefWidth="1331.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.DangNhap">
    <children>
       <VBox layoutX="5.0" prefHeight="667.0" prefWidth="300.0" spacing="5">
          <children>
@@ -26,7 +26,7 @@
             </ComboBox>
             <Button alignment="BASELINE_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="274.0" text="Khách hàng" />
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="98.0" prefWidth="274.0" text="Hóa đơn" />
-            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="197.0" prefWidth="274.0" text="LOGIN OUT" />
+            <Button  alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="197.0" prefWidth="274.0" text="LOGIN OUT" />
          </children>
       </VBox>
       <ImageView fitHeight="797.0" fitWidth="1215.0" pickOnBounds="true" preserveRatio="true">
