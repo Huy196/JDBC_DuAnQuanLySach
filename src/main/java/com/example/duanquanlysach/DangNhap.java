@@ -69,13 +69,13 @@ public class DangNhap {
                             saiMatKhau.setText("");
                         }
                     } else {
-                        saiMatKhau.setText("Account has been locked");
+                        saiMatKhau.setText("Sai thông tin đăng nhập !");
                     }
                 } else {
                     matKhau.requestFocus();
                 }
             } else {
-                saiMatKhau.setText("Incorrect login information!");
+                saiMatKhau.setText("Sai thông tin đăng nhập !");
                 tenDangNhap.requestFocus();
             }
             connection.close();
