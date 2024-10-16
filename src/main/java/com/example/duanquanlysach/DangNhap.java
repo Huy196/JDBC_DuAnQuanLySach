@@ -44,14 +44,19 @@ public class DangNhap {
                 if (resultSet_MatKhau.next()) {
                     String role = resultSet_Ten.getString("Role");
 
-                    if (role.equalsIgnoreCase("Quản Lý")) {
-                        System.out.println("Đăng nhập vào màn hình quản lý");
-                        saiMatKhau.setText("");
+                    String trangThai = resultSet_MatKhau.getString("TrangThai");
+                    if (trangThai.equalsIgnoreCase("On")) {
+                        if (role.equalsIgnoreCase("Quản Lý")) {
+                            System.out.println("Đăng nhập vào màn hình quản lý");
+                            saiMatKhau.setText("");
+                        } else {
+                            System.out.println("Đăng nhập vào màn hình người dùng");
+                            saiMatKhau.setText("");
+                        }
                     } else {
-                        System.out.println("Đăng nhập vào màn hình người dùng");
-                        saiMatKhau.setText("");
+                        saiMatKhau.setText("Account has been locked");
                     }
-                }else {
+                } else {
                     matKhau.requestFocus();
                 }
             } else {
@@ -60,7 +65,8 @@ public class DangNhap {
             }
             connection.close();
 
-        } catch (SQLException e) {
+        } catch (
+                SQLException e) {
             e.printStackTrace();
         }
     }
