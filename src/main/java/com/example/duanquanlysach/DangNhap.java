@@ -22,8 +22,6 @@ import java.util.Optional;
 
 public class DangNhap {
     @FXML
-    private Button Home;
-    @FXML
     private TextField tenDangNhap;
     @FXML
     private PasswordField matKhau;
@@ -63,7 +61,7 @@ public class DangNhap {
                             saiMatKhau.setText("");
 
                             thongBao();
-                            chuyenManHinhAdmin();
+                            HelloApplication.changeScene("GiaoDienAdmin.fxml");
                         } else {
                             System.out.println("Đăng nhập vào màn hình người dùng");
                             saiMatKhau.setText("");
@@ -87,15 +85,6 @@ public class DangNhap {
         }
     }
 
-    private void chuyenManHinhAdmin() throws IOException {
-        Stage stage = (Stage) tenDangNhap.getScene().getWindow();
-
-        Parent adminRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GiaoDienAdmin.fxml")));
-        Scene adminScene = new Scene(adminRoot);
-
-        stage.setScene(adminScene);
-    }
-
     private void thongBao() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Đăng nhập thành công");
@@ -109,29 +98,5 @@ public class DangNhap {
         timeline.play();
     }
 
-    public void dangXuat(){
-        try {
-
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Xác nhận đăng xuất");
-            alert.setHeaderText(null);
-            alert.setContentText("Bạn có chắc chắn muốn đăng xuất không ?");
-
-            Optional<ButtonType> result = alert.showAndWait();
-
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-
-                Stage stage = (Stage) Home.getScene().getWindow();
-
-                Parent dangXuat = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DangNhap.fxml")));
-                Scene dangXuat_1 = new Scene(dangXuat);
-                stage.setScene(dangXuat_1);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
 
 }
