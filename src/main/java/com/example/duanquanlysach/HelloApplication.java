@@ -11,16 +11,29 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("DangNhap.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 920, 740);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+    private static Stage primaryStage;
+    public void start(Stage stage){
 
-        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
-        connectionDatabase.connection();
+        HelloApplication.primaryStage = stage;
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GiaoDienAdmin.fxml")));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("DangNhap");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void changeScene(String fxml) throws IOException {
+        try {
+            Parent pane = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource(fxml)));
+            Scene scene = new Scene(pane);
+
+            primaryStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public static void main(String[] args) {
         launch();
