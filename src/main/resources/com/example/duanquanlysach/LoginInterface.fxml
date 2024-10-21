@@ -14,7 +14,7 @@
             <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="276.0" style="-fx-font-size: 20;" text="Đơn hàng" />
             <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT"  prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Khách hàng" />
             <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Hóa đơn" />
-            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dangXuat" prefHeight="197.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Đăng Xuất" />
+            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="197.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Đăng Xuất" />
          </children>
       </VBox>
       <AnchorPane fx:id="contentArea" prefHeight="200.0" prefWidth="200.0">

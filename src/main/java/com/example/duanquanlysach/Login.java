@@ -3,13 +3,8 @@ package com.example.duanquanlysach;
 import ConnectionDatabase.ConnectionDatabase;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -17,18 +12,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.Optional;
 
-public class DangNhap {
+public class Login {
     @FXML
-    private TextField tenDangNhap;
+    private TextField nameLogin;
     @FXML
-    private PasswordField matKhau;
+    private PasswordField password;
     @FXML
-    private Label saiMatKhau;
+    private Label falsePassword;
 
-    public void dangNhap() {
+    public void Login() {
         try {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
             Connection connection = connectionDatabase.connection();
@@ -38,15 +31,15 @@ public class DangNhap {
             PreparedStatement preparedStatement = null;
 
             preparedStatement = connection.prepareStatement(SQL_Ten);
-            preparedStatement.setString(1, tenDangNhap.getText());
+            preparedStatement.setString(1, nameLogin.getText());
 
             ResultSet resultSet_Ten = preparedStatement.executeQuery();
 
             if (resultSet_Ten.next()) {
                 String SQL_MatKhau = "select * from nguoidung where Ten = ? and MatKhau = ?";
                 preparedStatement = connection.prepareStatement(SQL_MatKhau);
-                preparedStatement.setString(1, tenDangNhap.getText());
-                preparedStatement.setString(2, matKhau.getText());
+                preparedStatement.setString(1, nameLogin.getText());
+                preparedStatement.setString(2, password.getText());
 
                 ResultSet resultSet_MatKhau = preparedStatement.executeQuery();
 
@@ -56,25 +49,25 @@ public class DangNhap {
                     String trangThai = resultSet_MatKhau.getString("TrangThai");
                     if (trangThai.equalsIgnoreCase("On")) {
                         if (role.equalsIgnoreCase("Quản Lý")) {
-                            tenDangNhap.clear();
-                            matKhau.clear();
-                            saiMatKhau.setText("");
+                            nameLogin.clear();
+                            password.clear();
+                            falsePassword.setText("");
 
                             thongBao();
-                            HelloApplication.changeScene("GiaoDienAdmin.fxml");
+                            Main.changeScene("LoginInterface.fxml");
                         } else {
                             System.out.println("Đăng nhập vào màn hình người dùng");
-                            saiMatKhau.setText("");
+                            falsePassword.setText("");
                         }
                     } else {
                     }
                 } else {
-                    saiMatKhau.setText("Sai thông tin đăng nhập !");
-                    matKhau.requestFocus();
+                    falsePassword.setText("Wrong login information!");
+                    password.requestFocus();
                 }
             } else {
-                saiMatKhau.setText("Sai thông tin đăng nhập !");
-                tenDangNhap.requestFocus();
+                falsePassword.setText("Wrong login information!");
+                nameLogin.requestFocus();
             }
             connection.close();
 
@@ -87,9 +80,9 @@ public class DangNhap {
 
     private void thongBao() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Đăng nhập thành công");
+        alert.setTitle("Login Successfully");
         alert.setHeaderText(null);
-        alert.setContentText("Đăng nhập thành công!");
+        alert.setContentText("Login Successfully");
 
         alert.show();
 

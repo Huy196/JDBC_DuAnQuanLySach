@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="615.0" prefWidth="1189.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Main">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20">
+         <children>
+            <Label alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="1136.0" text="Quản Lý Sản Phẩm" textAlignment="CENTER">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="1325.0" spacing="20">
+         <children>
+            <TableView prefHeight="100.0" prefWidth="1183.0">
+              <columns>
+                <TableColumn  prefWidth="26.4000244140625" text="id" />
+                <TableColumn  prefWidth="136.60001182556152" text="TenSach" />
+                  <TableColumn  prefWidth="126.20001220703125" text="TacGia" />
+                  <TableColumn  prefWidth="135.0" text="NoiDung" />
+                  <TableColumn  prefWidth="73.79998779296875" text="NamXB" />
+                  <TableColumn  prefWidth="71.19998168945312" text="MaNXB" />
+                  <TableColumn  prefWidth="82.5999755859375" text="GiaSach" />
+                  <TableColumn  prefWidth="77.800048828125" text="SoLuong" />
+                  <TableColumn  prefWidth="81.5999755859375" text="MaLoaiSach" />
+                  <TableColumn  prefWidth="82.0" text="TrangThai" />
+                  <TableColumn  prefWidth="126.800048828125" text="ChucNang" />
+      
+              </columns>
+            </TableView>
+            <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="301.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

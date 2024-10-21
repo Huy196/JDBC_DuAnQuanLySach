@@ -13,19 +13,20 @@ import java.util.Optional;
 public class ProductController {
     @FXML
     private AnchorPane contentArea;
-    public void dangXuat(){
+
+    public void logOut(){
         try {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Xác nhận đăng xuất");
+            alert.setTitle("Confirm sign-out");
             alert.setHeaderText(null);
-            alert.setContentText("Bạn có chắc chắn muốn đăng xuất không ?");
+            alert.setContentText("Are you sure you want to log out ?");
 
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
 
-                HelloApplication.changeScene("DangNhap.fxml");
+                Main.changeScene("Login.fxml");
             }
 
         }catch (Exception e){
@@ -35,16 +36,13 @@ public class ProductController {
 
     public void showProduct(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SanPhamAdmin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProductAdmin.fxml"));
             Parent dashboardView = loader.load();
 
             contentArea.getChildren().clear();
             contentArea.getChildren().add(dashboardView);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Có lỗi khi hiển thị giao diện  Trang chủ.");
-        } finally {
-            System.out.println("Đang hiển thị Trang chủ");
         }
     }
 }
