@@ -33,7 +33,7 @@
                         <TableColumn fx:id="functionColumn" prefWidth="103.800048828125" text="Chức Năng" />
                     </columns>
                 </TableView>
-                <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="145.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+                <Button onAction="#addProduct" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="145.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             </children>
         </HBox>
     </children>

@@ -197,5 +197,13 @@ public class ProductController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void addProduct(){
+        try {
+
+Main.changeScene("Admin_AddProduct.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
 
