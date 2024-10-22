@@ -4,27 +4,48 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="667.0" prefWidth="1331.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.ProductController">
+<HBox spacing="10" prefHeight="842.0" prefWidth="1395.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.ProductController">
    <children>
-      <VBox layoutX="5.0" prefHeight="667.0" prefWidth="300.0" spacing="5">
+      <VBox layoutX="5.0" prefHeight="842.0" prefWidth="235.0" spacing="5">
          <children>
             <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="171.0" prefWidth="274.0" style="-fx-font-size: 20;" text="HOME" />
             <Button alignment="BASELINE_CENTER" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Nhân viên" />
-            <Button onAction="#showProduct" alignment="BASELINE_CENTER" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Sản phẩm" />
+            <Button alignment="BASELINE_CENTER" onAction="#showProduct" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Sản phẩm" />
             <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="276.0" style="-fx-font-size: 20;" text="Đơn hàng" />
-            <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT"  prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Khách hàng" />
+            <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Khách hàng" />
             <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Hóa đơn" />
             <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="197.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Đăng Xuất" />
          </children>
       </VBox>
-      <AnchorPane fx:id="contentArea" prefHeight="200.0" prefWidth="200.0">
+      <VBox fx:id="contentArea" prefHeight="842.0" prefWidth="1256.0">
          <children>
-            <ImageView  fitHeight="797.0" fitWidth="1215.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="797.0" fitWidth="1215.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="https://toplist.vn/images/800px/hieu-sach-nha-nam-214377.jpg" />
                </image>
             </ImageView>
+            <HBox prefHeight="100.0" prefWidth="1325.0" spacing="20">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="500.0" prefWidth="1183.0">
+                     <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="26.4" text="ID" />
+                        <TableColumn fx:id="anhColumn" prefWidth="136.6" text="Tên Sách" />
+                        <TableColumn fx:id="nameBookColumn" prefWidth="136.6" text="Tên Sách" />
+                        <TableColumn fx:id="authorColumn" prefWidth="126.2" text="Tác Giả" />
+                        <TableColumn fx:id="contentColumn" prefWidth="135.0" text="Nội Dung" />
+                        <TableColumn fx:id="yearXBColumn" prefWidth="73.8" text="Năm XB" />
+                        <TableColumn fx:id="ghostNXBColumn" prefWidth="71.2" text="Mã NXB" />
+                        <TableColumn fx:id="priceBookColumn" prefWidth="82.6" text="Giá Sách" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="77.8" text="Số Lượng" />
+                        <TableColumn fx:id="codeBookColumn" prefWidth="81.6" text="Mã Loại Sách" />
+                        <TableColumn fx:id="statusColumn" prefWidth="82.0" text="Trạng Thái" />
+                        <TableColumn fx:id="functionColumn" prefWidth="126.8" text="Chức Năng" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="addButton" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="301.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+               </children>
+            </HBox>
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
 </HBox>
