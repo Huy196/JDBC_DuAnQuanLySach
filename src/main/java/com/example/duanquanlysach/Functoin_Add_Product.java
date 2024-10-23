@@ -1,7 +1,9 @@
 package com.example.duanquanlysach;
 
 import ConnectionDatabase.ConnectionDatabase;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -11,11 +13,13 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class Functoin_Add_Product {
+public class Functoin_Add_Product{
     @FXML
     private ImageView imageProduct;
     private String imagePath;
@@ -37,6 +41,12 @@ public class Functoin_Add_Product {
     private ComboBox typeProduct;
     @FXML
     private ComboBox statusProduct;
+
+    @FXML
+    public void resetAdminProduct() throws IOException {
+        Main.changeScene("LoginInterface.fxml");
+
+    }
 
     @FXML
     public void handleChooseImage() {
@@ -98,16 +108,12 @@ public class Functoin_Add_Product {
                 quantityProduct.clear();
 
 
-                try {
-
-                    Main.changeScene("LoginInterface.fxml");
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+                Main.changeScene("LoginInterface.fxml");
             }
-
         }catch (SQLException e){
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         connection.close();
     }
