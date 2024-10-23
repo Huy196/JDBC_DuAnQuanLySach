@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -107,7 +108,7 @@ public class ProductController implements Initializable {
 
                     editButton.setOnAction(event -> {
                         Product product = getTableView().getItems().get(getIndex());
-                        editProduct();
+                        editProduct(product);
                     });
 
                     deleteButton.setOnAction(event -> {
@@ -122,9 +123,17 @@ public class ProductController implements Initializable {
         });
     }
 
-    public void editProduct() {
+    public void editProduct(Product product) {
         try {
-            Main.changeScene("Admin_UpdateProduct.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_UpdateProduct.fxml"));
+            Parent root = loader.load();
+
+            Functoin controller = loader.getController();
+            controller.setProductData(product);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -203,7 +212,12 @@ public class ProductController implements Initializable {
     }
     public void addProduct(){
         try {
-            Main.changeScene("Admin_AddProduct.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_AddProduct.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
