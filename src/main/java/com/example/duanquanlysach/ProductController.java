@@ -107,7 +107,7 @@ public class ProductController implements Initializable {
 
                     editButton.setOnAction(event -> {
                         Product product = getTableView().getItems().get(getIndex());
-                        editProduct(product);
+                        editProduct();
                     });
 
                     deleteButton.setOnAction(event -> {
@@ -122,8 +122,12 @@ public class ProductController implements Initializable {
         });
     }
 
-    public void editProduct(Product product) {
-        System.out.println("Chỉnh sửa sản phẩm: ");
+    public void editProduct() {
+        try {
+            Main.changeScene("Admin_UpdateProduct.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void deleteProduct(Product product) {
