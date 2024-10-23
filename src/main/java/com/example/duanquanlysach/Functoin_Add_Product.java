@@ -106,14 +106,9 @@ public class Functoin_Add_Product{
                 contentProduct.clear();
                 priceProduct.clear();
                 quantityProduct.clear();
-
-
-                Main.changeScene("LoginInterface.fxml");
             }
         }catch (SQLException e){
             e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         connection.close();
     }
