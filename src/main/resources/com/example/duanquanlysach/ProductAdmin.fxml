@@ -13,27 +13,31 @@
                         <Font size="31.0" />
                     </font>
                 </Label>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                      <Button alignment="CENTER" contentDisplay="CENTER" layoutY="26.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="36.0" prefWidth="145.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+               </children>
+            </Pane>
             </children>
         </HBox>
         <HBox prefHeight="760.0" prefWidth="1291.0" spacing="20">
             <children>
-                <TableView fx:id="tableView" prefHeight="757.0" prefWidth="1104.0">
+                <TableView fx:id="tableView" prefHeight="760.0" prefWidth="1247.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="53.59999084472656" text="ID" />
                         <TableColumn fx:id="anhColumn" prefWidth="126.0" text="Anh" />
-                        <TableColumn fx:id="nameBookColumn" prefWidth="99.60000610351562" text="Tên Sách" />
-                        <TableColumn fx:id="authorColumn" prefWidth="126.2" text="Tác Giả" />
-                        <TableColumn fx:id="contentColumn" prefWidth="135.0" text="Nội Dung" />
-                        <TableColumn fx:id="yearXBColumn" prefWidth="73.8" text="Năm XB" />
-                        <TableColumn fx:id="ghostNXBColumn" prefWidth="71.2" text="Mã NXB" />
-                        <TableColumn fx:id="priceBookColumn" prefWidth="75.20001220703125" text="Giá Sách" />
-                        <TableColumn fx:id="quantityColumn" prefWidth="64.0" text="Số Lượng" />
-                        <TableColumn fx:id="codeBookColumn" prefWidth="85.4000244140625" text="Mã Loại Sách" />
-                        <TableColumn fx:id="statusColumn" prefWidth="75.7999267578125" text="Trạng Thái" />
-                        <TableColumn fx:id="functionColumn" prefWidth="103.800048828125" text="Chức Năng" />
+                        <TableColumn fx:id="nameBookColumn" prefWidth="111.00001525878906" text="Tên Sách" />
+                        <TableColumn fx:id="authorColumn" prefWidth="157.800048828125" text="Tác Giả" />
+                        <TableColumn fx:id="contentColumn" prefWidth="191.60000610351562" text="Nội Dung" />
+                        <TableColumn fx:id="yearXBColumn" prefWidth="71.5999755859375" text="Năm XB" />
+                        <TableColumn fx:id="ghostNXBColumn" prefWidth="72.20001220703125" text="MaNXB" />
+                        <TableColumn fx:id="priceBookColumn" prefWidth="71.4000244140625" text="Giá Sách" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="73.20001220703125" text="Số Lượng" />
+                        <TableColumn fx:id="codeBookColumn" prefWidth="71.20001220703125" text="MaLS" />
+                        <TableColumn fx:id="statusColumn" prefWidth="89.199951171875" text="Trạng Thái" />
+                        <TableColumn fx:id="functionColumn" prefWidth="132.199951171875" text="Chức Năng" />
                     </columns>
                 </TableView>
-                <Button onAction="#addProduct" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="145.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             </children>
         </HBox>
     </children>

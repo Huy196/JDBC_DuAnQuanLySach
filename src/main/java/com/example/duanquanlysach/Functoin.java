@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -220,9 +219,16 @@ public class Functoin {
         publishingHouseProduct.setValue(getTenNXB(product.getMaNXB()));
         priceProduct.setText(String.valueOf(product.getGiaSach()));
         quantityProduct.setText(String.valueOf(product.getSoLuong()));
-        typeProduct.setValue(getTenLoaiSach(product.getMaLoaiSach())); //
-//        statusProduct.setValue(product.getTrangThai());
+        typeProduct.setValue(getTenLoaiSach(product.getMaLoaiSach()));
 
+    }
+
+    public String setStatusProduct(Product product){
+        this.product = product;
+        String currentStatus = product.getTrangThai();
+        String newStatus = currentStatus.equals("Còn hàng") ? "Còn hàng": "Hết hàng";
+        product.setTrangThai(newStatus);
+        return newStatus;
     }
 
     public String getTenNXB(int maNXB) {
