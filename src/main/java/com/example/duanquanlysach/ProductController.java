@@ -119,7 +119,6 @@ public class ProductController implements Initializable {
                         Product product = getTableView().getItems().get(getIndex());
                         updateStatusProduct(product);
                     });
-
                     setGraphic(hBox);
                     setText(null);
                 }
@@ -176,6 +175,7 @@ public class ProductController implements Initializable {
                     e.printStackTrace();
                 }
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
