@@ -1,6 +1,8 @@
 package com.example.duanquanlysach;
 
 import ConnectionDatabase.ConnectionDatabase;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,9 +19,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,7 +39,7 @@ public class ProductController implements Initializable {
     private TableColumn<Product, Integer> idColumn;
 
     @FXML
-    private TableColumn<Product,String> anhColumn;
+    private TableColumn<Product, String> anhColumn;
     @FXML
     private TableColumn<Product, String> nameBookColumn;
     @FXML
@@ -60,9 +64,9 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        idColumn.setCellValueFactory(new PropertyValueFactory<Product,Integer>("maSach"));
-        anhColumn.setCellValueFactory(new PropertyValueFactory<Product,String>("Anh"));
-        anhColumn.setCellFactory(column -> new TableCell<Product,String>() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("maSach"));
+        anhColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("Anh"));
+        anhColumn.setCellFactory(column -> new TableCell<Product, String>() {
             private final ImageView imageView = new ImageView();
 
             @Override
@@ -80,21 +84,21 @@ public class ProductController implements Initializable {
                 }
             }
         });
-        nameBookColumn.setCellValueFactory(new PropertyValueFactory<Product,String>("tenSach"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<Product,String>("tacGia"));
-        contentColumn.setCellValueFactory(new PropertyValueFactory<Product,String>("noiDung"));
-        yearXBColumn.setCellValueFactory(new PropertyValueFactory<Product,Integer>("namXB"));
-        ghostNXBColumn.setCellValueFactory(new PropertyValueFactory<Product,Integer>("maNXB"));
-        priceBookColumn.setCellValueFactory(new PropertyValueFactory<Product,Double>("giaSach"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<Product,Integer>("soLuong"));
-        codeBookColumn.setCellValueFactory(new PropertyValueFactory<Product,Integer>("maLoaiSach"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<Product,String>("trangThai"));
+        nameBookColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("tenSach"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("tacGia"));
+        contentColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("noiDung"));
+        yearXBColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("namXB"));
+        ghostNXBColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("maNXB"));
+        priceBookColumn.setCellValueFactory(new PropertyValueFactory<Product, Double>("giaSach"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("soLuong"));
+        codeBookColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("maLoaiSach"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("trangThai"));
 
         loadData();
 
         functionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button editButton = new Button("Sửa");
-            private final Button deleteButton = new Button("Xóa");
+            private final Button editStatusButton = new Button("Cập nhật TT");
 
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -103,7 +107,7 @@ public class ProductController implements Initializable {
                     setGraphic(null);
                     setText(null);
                 } else {
-                    HBox hBox = new HBox(editButton, deleteButton);
+                    HBox hBox = new HBox(editButton, editStatusButton);
                     hBox.setSpacing(10);
 
                     editButton.setOnAction(event -> {
@@ -111,9 +115,9 @@ public class ProductController implements Initializable {
                         editProduct(product);
                     });
 
-                    deleteButton.setOnAction(event -> {
+                    editStatusButton.setOnAction(event -> {
                         Product product = getTableView().getItems().get(getIndex());
-                        deleteProduct(product);
+                        updateStatusProduct(product);
                     });
 
                     setGraphic(hBox);
@@ -134,19 +138,52 @@ public class ProductController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteProduct(Product product) {
-        System.out.println("Xóa sản phẩm: ");
+    public void updateStatusProduct(Product product) {
+        Functoin functoin = new Functoin();
+        String status = functoin.setStatusProduct(product);
+
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        var connection = connectionDatabase.connection();
+
+
+        String SQL = "update sach set TrangThai = case when TrangThai = 'Còn hàng' then 'Hết hàng' else 'Còn hàng' end where MaSach = ?";
+
+        PreparedStatement preparedStatement = null;
+
+        try {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xác nhận cập nhật");
+            alert.setHeaderText(null);
+            alert.setContentText("Bạn có chắc chắn muốn cập nhật trạng thái không?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
+                    preparedStatement = connection.prepareStatement(SQL);
+                    preparedStatement.setInt(1, product.getMaSach());
+
+                    int row = preparedStatement.executeUpdate();
+                    if (row > 0) {
+                        thongBao();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadData() {
         try {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
-            connectionDatabase.connection();
             var connection = connectionDatabase.connection();
 
             String SQL = "SELECT * FROM sach";
@@ -210,7 +247,8 @@ public class ProductController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void addProduct(){
+
+    public void addProduct() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_AddProduct.fxml"));
             Parent root = loader.load();
@@ -218,9 +256,22 @@ public class ProductController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void thongBao() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Cập nhật");
+        alert.setHeaderText(null);
+        alert.setContentText("Cập nhật trạng thái thành công");
+
+        alert.show();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> alert.hide()));
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 }
 
