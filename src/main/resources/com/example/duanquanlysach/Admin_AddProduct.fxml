@@ -112,9 +112,6 @@
                     <Button onAction="#saveProduct" prefHeight="30.0" prefWidth="136.0"
                             style=" -fx-background-color: #26aa99; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0, 0, 0); -fx-border-color: gray; -fx-border-radius: 7; -fx-background-radius: 7"
                             text="Save"/>
-                    <Button onAction="#resetAdminProduct" prefHeight="30.0" prefWidth="136.0"
-                            style=" -fx-background-color: #26aa99; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0, 0, 0); -fx-border-color: gray; -fx-border-radius: 7; -fx-background-radius: 7"
-                            text="Quay Lại"/>
                 </HBox>
             </HBox>
 

@@ -40,12 +40,6 @@ public class Functoin {
     private ComboBox statusProduct;
 
     @FXML
-    public void resetAdminProduct() throws IOException {
-        Main.changeScene("LoginInterface.fxml");
-
-    }
-
-    @FXML
     public void handleChooseImage() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(
