@@ -1,12 +1,16 @@
 package com.example.duanquanlysach;
 
 import ConnectionDatabase.ConnectionDatabase;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.sql.PreparedStatement;
@@ -63,6 +67,66 @@ public class Functoin {
         PreparedStatement preparedStatement = null;
 
         try {
+            if (nameProduct.getText().isEmpty()) {
+                highlightField(nameProduct);
+                nameProduct.requestFocus();
+                return;
+            } else {
+                clearHighlight(nameProduct);
+            }
+            if (authorProduct.getText().isEmpty()) {
+                highlightField(authorProduct);
+                authorProduct.requestFocus();
+                return;
+            } else {
+                clearHighlight(authorProduct);
+            }
+            if (contentProduct.getText().isEmpty()) {
+                highlightField(contentProduct);
+                contentProduct.requestFocus();
+                return;
+            } else {
+                clearHighlight(contentProduct);
+            }
+            if (!isNumeric(priceProduct.getText())) {
+                highlightField(priceProduct);
+                thongBao("Giá sách phải là một số hợp lệ!");
+                priceProduct.requestFocus();
+                return;
+            } else {
+                clearHighlight(priceProduct);
+            }
+            if (!isNumeric(quantityProduct.getText())) {
+                highlightField(quantityProduct);
+                thongBao("Số lượng là một số hợp lệ!");
+                quantityProduct.requestFocus();
+                return;
+            } else {
+                clearHighlight(quantityProduct);
+            }
+            if (yearProduct.getValue() == null) {
+                thongBao("Vui lòng chọn năm xuất bản!");
+                yearProduct.requestFocus();
+                return;
+            }
+            if (publishingHouseProduct.getValue() == null) {
+                thongBao("Vui lòng chọn nhà xuất bản!");
+                publishingHouseProduct.requestFocus();
+                return;
+            }
+            if (typeProduct.getValue() == null) {
+                thongBao("Vui lòng chọn loại sách!");
+                typeProduct.requestFocus();
+                return;
+            }
+
+            if (statusProduct.getValue() == null) {
+                thongBao("Vui lòng chọn trạng thái sách!");
+                statusProduct.requestFocus();
+                return;
+            }
+
+
             int maLoaiSach = getMaLoaiSach((String) typeProduct.getValue());
             int maNXB = getMaNXB((String) publishingHouseProduct.getValue());
 
@@ -101,6 +165,14 @@ public class Functoin {
             e.printStackTrace();
         }
         connection.close();
+    }
+
+    private void highlightField(TextField field) {
+        field.setStyle("-fx-border-color: red; -fx-border-width: 2px;"); // Đặt viền đỏ
+    }
+
+    private void clearHighlight(TextField field) {
+        field.setStyle(""); // Xóa viền
     }
 
     public int getMaLoaiSach(String typeProduct) {
@@ -164,7 +236,6 @@ public class Functoin {
             int year = Integer.parseInt(yearProduct.getValue().toString());
             double price = Double.parseDouble(priceProduct.getText());
             int quantity = Integer.parseInt(quantityProduct.getText());
-//            String status = statusProduct.getValue().toString();
             String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
 
             String SQL = "update sach set Anh = ?, TenSach = ?, TacGia = ?, NoiDung = ?, NamXuatBan = ?, MaNXB = ?, GiaSach = ?, SoLuong = ?, MaLoaiSach = ? where MaSach = ?";
@@ -183,7 +254,6 @@ public class Functoin {
             preparedStatement.setInt(8, quantity);
             preparedStatement.setInt(9, maLoaiSach);
             preparedStatement.setInt(10, product.getMaSach());
-//            preparedStatement.setString(10, status);
 
             int row = preparedStatement.executeUpdate();
             if (row > 0) {
@@ -194,7 +264,6 @@ public class Functoin {
                 priceProduct.clear();
                 quantityProduct.clear();
                 typeProduct.setValue(null);
-//                statusProduct.setValue(null);
                 yearProduct.setValue(null);
                 publishingHouseProduct.setValue(null);
                 imageProduct.setImage(null);
@@ -223,10 +292,10 @@ public class Functoin {
 
     }
 
-    public String setStatusProduct(Product product){
+    public String setStatusProduct(Product product) {
         this.product = product;
         String currentStatus = product.getTrangThai();
-        String newStatus = currentStatus.equals("Còn hàng") ? "Còn hàng": "Hết hàng";
+        String newStatus = currentStatus.equals("Còn hàng") ? "Còn hàng" : "Hết hàng";
         product.setTrangThai(newStatus);
         return newStatus;
     }
@@ -277,4 +346,28 @@ public class Functoin {
         return tenLoaiSach;
     }
 
+    private void thongBao(String name) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thông báo");
+        alert.setHeaderText(null);
+        alert.setContentText(name);
+
+        alert.show();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> alert.hide()));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
+    private boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        try {
+            Double.parseDouble(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
 }
