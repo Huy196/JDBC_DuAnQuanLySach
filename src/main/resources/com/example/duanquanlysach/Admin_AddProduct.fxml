@@ -15,7 +15,7 @@
               style="-fx-padding: 90px; -fx-background-color: linear-gradient(to bottom, mediumslateblue, pink) ">
             <Button onAction="#handleChooseImage" alignment="CENTER" layoutX="112.0" layoutY="49.0" prefHeight="88.0" prefWidth="335.0"
                     style="-fx-background-radius: 7; -fx-background-color: #eda500; -fx-text-fill: white"
-                    text="Choose Image"/>
+                    text="Chọn Ảnh"/>
             <ImageView fx:id="imageProduct" fitHeight="274.0" fitWidth="336.0" nodeOrientation="INHERIT"
                        preserveRatio="true" BorderPane.alignment="CENTER"/>
         </VBox>
@@ -111,7 +111,7 @@
                 <HBox spacing="30">
                     <Button onAction="#saveProduct" prefHeight="30.0" prefWidth="136.0"
                             style=" -fx-background-color: #26aa99; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0, 0, 0); -fx-border-color: gray; -fx-border-radius: 7; -fx-background-radius: 7"
-                            text="Save"/>
+                            text="Lưu"/>
                 </HBox>
             </HBox>
 
