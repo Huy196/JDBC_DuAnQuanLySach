@@ -2,6 +2,8 @@ package com.example.duanquanlysach;
 
 import ConnectionDatabase.ConnectionDatabase;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 
@@ -64,5 +66,12 @@ public class DangKy {
 
         }
 
+    }
+    public void Sigin_Login(){
+        try {
+            Main.changeScene("Login.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
