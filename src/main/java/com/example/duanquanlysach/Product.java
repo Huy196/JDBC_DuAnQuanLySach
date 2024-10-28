@@ -27,6 +27,10 @@ public class Product {
         this.Anh = anh;
     }
 
+    public Product() {
+
+    }
+
     public String getAnh() {
         return Anh;
     }
