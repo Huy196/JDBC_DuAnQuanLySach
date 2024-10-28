@@ -119,13 +119,13 @@ public class DangKy {
         }
 
     }
-    public void Sigin_Login(){
+    public void Sigin_Login() {
         try {
             Main.changeScene("Login.fxml");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
     private void highlightField(TextField field) {
         field.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
     }
