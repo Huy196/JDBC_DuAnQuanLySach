@@ -110,7 +110,7 @@ public class Admin_UserController implements Initializable {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
             Connection connection = connectionDatabase.connection();
 
-            String SQL = "select * from NguoiDung";
+            String SQL = "select * from NguoiDung ";
 
 
             Statement statement = connection.createStatement();
