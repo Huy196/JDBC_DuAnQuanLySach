@@ -112,7 +112,17 @@ public class Sign_In {
         }
 
     }
+<<<<<<< HEAD:src/main/java/com/example/duanquanlysach/Sign_In.java
 
+=======
+    public void Sigin_Login() {
+        try {
+            Main.changeScene("Login.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+>>>>>>> 4ee0520c619a6de303de58dfa0619bf9ed047b57:src/main/java/com/example/duanquanlysach/DangKy.java
     private void highlightField(TextField field) {
         field.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 
