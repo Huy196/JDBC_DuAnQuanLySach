@@ -4,21 +4,16 @@ import ConnectionDatabase.ConnectionDatabase;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DangKy {
+public class Sign_In {
     @FXML
     private TextField TenDangNhap;
     @FXML
@@ -90,8 +85,6 @@ public class DangKy {
             }
 
 
-
-
             PreparedStatement preparedStatement = null;
 
             preparedStatement = connection.prepareStatement(SQL_NguoiDung);
@@ -119,20 +112,24 @@ public class DangKy {
         }
 
     }
-    public void Sigin_Login(){
-        try {
-            Main.changeScene("Login.fxml");
-        }catch (IOException e){
-            e.printStackTrace();
-        }
 
     private void highlightField(TextField field) {
         field.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+
+    }
+
+    public void Sigin_Login() {
+        try {
+            Main.changeScene("Login.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void clearHighlight(TextField field) {
         field.setStyle("");
     }
+
     private void Alert(String name) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Thông báo");

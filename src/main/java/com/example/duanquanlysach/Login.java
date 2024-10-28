@@ -79,7 +79,7 @@ public class Login {
     }
     public void Login_Sign(){
         try {
-            Main.changeScene("DangKy.fxml");
+            Main.changeScene("Sign_In.fxml");
         }catch (IOException e){
             e.printStackTrace();
         }
