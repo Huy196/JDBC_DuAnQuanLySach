@@ -15,7 +15,7 @@ public class Main extends Application {
 
         Main.primaryStage = stage;
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginInterface.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DangKy.fxml")));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Login");
