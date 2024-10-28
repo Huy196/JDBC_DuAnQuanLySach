@@ -77,6 +77,13 @@ public class Login {
             throw new RuntimeException(e);
         }
     }
+    public void Login_Sign(){
+        try {
+            Main.changeScene("DangKy.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     private void thongBao() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
