@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<BorderPane prefHeight="529.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Functoin">
-
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.duanquanlysach.Functoin"
+            prefHeight="400.0" prefWidth="600.0">
     <center>
         <VBox alignment="CENTER_LEFT" prefHeight="530.0" prefWidth="493.0" spacing="10"
               style="-fx-padding: 90px; -fx-background-color: linear-gradient(to bottom, mediumslateblue, pink) ">
@@ -84,7 +86,7 @@
             </HBox>
             <HBox>
                 <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Loại sách :"/>
-                <ComboBox fx:id="typeProduct" prefHeight="31.0" prefWidth="369.0" style="-fx-font-size: 15; -fx-background-radius: 9">
+                <ComboBox  fx:id="typeProduct" prefHeight="31.0" prefWidth="369.0" style="-fx-font-size: 15; -fx-background-radius: 9">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Khoa học viễn tưởng"/>
@@ -97,19 +99,8 @@
                 </ComboBox>
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Trạng thái :"/>
-                <ComboBox fx:id="statusProduct" prefHeight="31.0" prefWidth="369.0" style="-fx-font-size: 15; -fx-background-radius: 9">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Còn hàng"/>
-                            <String fx:value="Hết hàng"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            </HBox>
-            <HBox>
                 <HBox spacing="30">
-                    <Button onAction="#saveProduct" prefHeight="30.0" prefWidth="136.0"
+                    <Button onAction="#handAddOrUpdateProduct" prefHeight="30.0" prefWidth="136.0"
                             style=" -fx-background-color: #26aa99; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0, 0, 0); -fx-border-color: gray; -fx-border-radius: 7; -fx-background-radius: 7"
                             text="Lưu"/>
                 </HBox>
@@ -117,6 +108,5 @@
 
         </VBox>
     </right>
-
 
 </BorderPane>

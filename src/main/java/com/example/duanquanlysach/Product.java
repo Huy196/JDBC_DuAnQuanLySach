@@ -1,8 +1,5 @@
 package com.example.duanquanlysach;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 public class Product {
     private int maSach;
     private String Anh;
