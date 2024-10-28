@@ -247,6 +247,17 @@ public class ProductController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void showUser(){
+        try {
+            contentArea.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_User.fxml"));
+            Parent parent = loader.load();
+
+            contentArea.getChildren().add(parent);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public void addProduct() {
         try {
