@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDatabase {
-    private String UML = "jdbc:mysql://127.0.0.1:3307/jdbc_QuanLyBanSach";
+    private String UML = "jdbc:mysql://127.0.0.1:3306/jdbc_QuanLyBanSach";
     private String name = "root";
-    private String pass = "Hocky3@12";
+    private String pass = "1962005";
 
     Connection connection = null;
 
