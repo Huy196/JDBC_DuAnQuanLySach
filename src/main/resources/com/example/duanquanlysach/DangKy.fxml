@@ -69,7 +69,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="300.0" layoutY="337.0" mnemonicParsing="false" text="Bạn đã có tài khoản">
+            <Button onAction="#Sigin_Login" layoutX="300.0" layoutY="337.0" mnemonicParsing="false" text="Bạn đã có tài khoản">
                <font>
                   <Font size="18.0" />
                </font>
