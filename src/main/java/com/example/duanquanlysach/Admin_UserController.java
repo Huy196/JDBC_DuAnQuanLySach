@@ -6,14 +6,19 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.Optional;
@@ -90,7 +95,7 @@ public class Admin_UserController implements Initializable {
 
                     editButton.setOnAction(event -> {
                         User user = getTableView().getItems().get(getIndex());
-
+                        editInformationUser(user);
                     });
 
                     editStatusButton.setOnAction(event -> {
@@ -104,6 +109,23 @@ public class Admin_UserController implements Initializable {
             }
         });
     }
+    public void editInformationUser(User user){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_interfaceUpdateInformationUser.fxml"));
+            Parent root = loader.load();
+
+            Funtion_UserController controller = loader.getController();
+            controller.setUserData(user);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void editStatusUser(User user){
         // kết nối data
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();

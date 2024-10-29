@@ -8,7 +8,9 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <BorderPane prefHeight="529.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Admin_Function_Controller_Product">
+ Feature/Admin/functionUpdateInformationUser
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Functoin_ProductCotroller">
+
 
     <center>
         <VBox alignment="CENTER_LEFT" prefHeight="530.0" prefWidth="493.0" spacing="10"

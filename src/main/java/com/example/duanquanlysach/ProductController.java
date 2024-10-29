@@ -129,7 +129,9 @@ public class ProductController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_UpdateProduct.fxml"));
             Parent root = loader.load();
 
-            Admin_Function_Controller_Product controller = loader.getController();
+ Feature/Admin/functionUpdateInformationUser
+            Functoin_ProductCotroller controller = loader.getController();
+
             controller.setProductData(product);
 
             Stage stage = new Stage();
