@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Functoin {
+public class User_Function_Controller {
 
     private Product product;
     @FXML
