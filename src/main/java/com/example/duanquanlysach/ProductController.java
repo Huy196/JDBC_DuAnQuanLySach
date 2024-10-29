@@ -3,7 +3,6 @@ package com.example.duanquanlysach;
 import ConnectionDatabase.ConnectionDatabase;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -131,7 +129,7 @@ public class ProductController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_UpdateProduct.fxml"));
             Parent root = loader.load();
 
-            Functoin controller = loader.getController();
+            Functoin_ProductCotroller controller = loader.getController();
             controller.setProductData(product);
 
             Stage stage = new Stage();

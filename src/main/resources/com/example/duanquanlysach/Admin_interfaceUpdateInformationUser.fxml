@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Funtion_UserController">
+   <top>
+      <Label prefHeight="97.0" prefWidth="438.0" text="Sửa Thông Tin Người Dùng" textFill="#0000aa" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="438.0" prefWidth="703.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="237.0" layoutY="53.0" text="Tên : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameUser" layoutX="314.0" layoutY="47.0" prefHeight="40.0" prefWidth="374.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="237.0" layoutY="155.0" text="Địa Chỉ : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="addressUser" layoutX="315.0" layoutY="149.0" prefHeight="40.0" prefWidth="371.0">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </TextField>
+            <Label layoutX="237.0" layoutY="249.0" text="SĐT : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phoneNumberUser" layoutX="315.0" layoutY="243.0" prefHeight="40.0" prefWidth="371.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <ImageView fx:id="imageUser" fitHeight="253.0" fitWidth="172.0" layoutX="38.0" layoutY="123.0" nodeOrientation="INHERIT" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <Button layoutX="69.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleChooseImage" prefHeight="26.0" prefWidth="109.0" text="Chọn Ảnh" textFill="#000099">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button layoutX="283.0" layoutY="359.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="89.0" text="Lưu" textFill="#0000aa">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

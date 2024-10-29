@@ -17,11 +17,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Functoin {
+public class Functoin_ProductCotroller {
 
     private Product product;
     @FXML
     private ImageView imageProduct;
+
     private String imagePath;
     @FXML
     private TextField nameProduct;
