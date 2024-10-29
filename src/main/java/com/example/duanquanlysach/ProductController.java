@@ -143,9 +143,6 @@ public class ProductController implements Initializable {
     }
 
     public void updateStatusProduct(Product product) {
-        Functoin functoin = new Functoin();
-        String status = functoin.setStatusProduct(product);
-
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
 

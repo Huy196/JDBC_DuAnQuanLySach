@@ -1,24 +1,22 @@
 package com.example.duanquanlysach;
 
 import ConnectionDatabase.ConnectionDatabase;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Admin_UserController implements Initializable {
@@ -91,10 +89,13 @@ public class Admin_UserController implements Initializable {
                     hBox.setSpacing(10);
 
                     editButton.setOnAction(event -> {
+                        User user = getTableView().getItems().get(getIndex());
 
                     });
 
                     editStatusButton.setOnAction(event -> {
+                        User user = getTableView().getItems().get(getIndex());
+                        editStatusUser(user);
 
                     });
                     setGraphic(hBox);
@@ -102,6 +103,49 @@ public class Admin_UserController implements Initializable {
                 }
             }
         });
+    }
+    public void editStatusUser(User user){
+        // kết nối data
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        var connection = connectionDatabase.connection();
+
+
+        // viết mã update trạng thái
+        String SQL_TrangThai = "Update nguoidung set TrangThai= case when TrangThai = 'On' then 'Off' else 'On' end where MaNguoiDung = ? and Role != 'Quản Lý'";
+        PreparedStatement preparedStatement =null;
+        // nếu mà là 'on' -> off
+        //nếu 'off' -> on
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Xác nhận thay đổi trạng thái");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn có chắc chắn muốn thay đổi ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK){
+            try {
+               preparedStatement = connection.prepareStatement(SQL_TrangThai);
+               preparedStatement.setInt(1,user.getMaNguoiDung());
+
+               int row = preparedStatement.executeUpdate();
+               if (row > 0) {
+                   show("Cập nhật thành công !");
+               }else if (user.getRole().equalsIgnoreCase("Quản Lý")){
+                   show("Không thể cập nhật trạng thái của người quản lý");
+               } else {
+                   show("Cập nhật thất bại !");
+               }
+                connection.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        // viết 1 alert thông báo
+        // update data
+
+        // nếu đồng ý thì chạy ko thì ko có j xảy ra
+
+    }
     }
 
 
@@ -137,5 +181,17 @@ public class Admin_UserController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    private void show( String text) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Cập nhật");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+
+        alert.show();
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.9), event -> alert.hide()));
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 }
