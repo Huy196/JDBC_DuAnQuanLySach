@@ -129,7 +129,6 @@ public class ProductController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_UpdateProduct.fxml"));
             Parent root = loader.load();
 
- Feature/Admin/functionUpdateInformationUser
             Functoin_ProductCotroller controller = loader.getController();
 
             controller.setProductData(product);
