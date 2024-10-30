@@ -94,7 +94,7 @@ public class Login {
 
         alert.show();
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> alert.hide()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.9), event -> alert.hide()));
         timeline.setCycleCount(1);
         timeline.play();
     }
