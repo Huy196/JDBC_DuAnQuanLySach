@@ -1,65 +1,65 @@
 package com.example.duanquanlysach;
 
 public class User {
-    private int MaNguoiDung;
-    private String Anh;
-    private String Ten;
-    private String MatKhau;
-    private String DiaChi;
+    private int maNguoiDung;
+    private String anh;
+    private String ten;
+    private String matKhau;
+    private String diaChi;
     private String SDT;
 
     private String Role;
-    private String TrangThai;
+    private String trangThai;
 
     public User(int maNguoiDung, String anh, String ten, String matKhau, String diaChi, String SDT, String role, String trangThai) {
-        this.MaNguoiDung = maNguoiDung;
-        this.Anh = anh;
-        this.Ten = ten;
-        this.MatKhau = matKhau;
-        this.DiaChi = diaChi;
+        this.maNguoiDung = maNguoiDung;
+        this.anh = anh;
+        this.ten = ten;
+        this.matKhau = matKhau;
+        this.diaChi = diaChi;
         this.SDT = SDT;
         this.Role = role;
-        this.TrangThai = trangThai;
+        this.trangThai = trangThai;
     }
 
     public int getMaNguoiDung() {
-        return MaNguoiDung;
+        return maNguoiDung;
     }
 
     public void setMaNguoiDung(int maNguoiDung) {
-        MaNguoiDung = maNguoiDung;
+        maNguoiDung = maNguoiDung;
     }
 
     public String getAnh() {
-        return Anh;
+        return anh;
     }
 
     public void setAnh(String anh) {
-        Anh = anh;
+        anh = anh;
     }
 
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        ten = ten;
     }
 
     public String getMatKhau() {
-        return MatKhau;
+        return matKhau;
     }
 
     public void setMatKhau(String matKhau) {
-        MatKhau = matKhau;
+        matKhau = matKhau;
     }
 
     public String getDiaChi() {
-        return DiaChi;
+        return diaChi;
     }
 
     public void setDiaChi(String diaChi) {
-        DiaChi = diaChi;
+        diaChi = diaChi;
     }
 
     public String getSDT() {
@@ -79,10 +79,10 @@ public class User {
     }
 
     public String getTrangThai() {
-        return TrangThai;
+        return trangThai;
     }
 
     public void setTrangThai(String trangThai) {
-        TrangThai = trangThai;
+        trangThai = trangThai;
     }
 }

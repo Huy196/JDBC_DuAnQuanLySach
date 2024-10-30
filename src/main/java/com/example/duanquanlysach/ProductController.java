@@ -165,7 +165,7 @@ public class ProductController implements Initializable {
 
                     int row = preparedStatement.executeUpdate();
                     if (row > 0) {
-                        thongBao();
+                        Alert();
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -268,7 +268,7 @@ public class ProductController implements Initializable {
         }
     }
 
-    private void thongBao() {
+    private void Alert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cập nhật");
         alert.setHeaderText(null);
