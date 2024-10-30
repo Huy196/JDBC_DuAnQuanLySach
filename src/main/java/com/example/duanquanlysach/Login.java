@@ -53,7 +53,7 @@ public class Login {
                             password.clear();
                             falsePassword.setText("");
 
-                            thongBao();
+                            Alert();
                             Main.changeScene("LoginInterface.fxml");
                         } else {
                             System.out.println("Đăng nhập vào màn hình người dùng");
@@ -62,11 +62,11 @@ public class Login {
                     } else {
                     }
                 } else {
-                    falsePassword.setText("Wrong login information!");
+                    falsePassword.setText("Sai mật khẩu !");
                     password.requestFocus();
                 }
             } else {
-                falsePassword.setText("Wrong login information!");
+                falsePassword.setText("Sai tên đăng nhập hoặc mật khẩu !");
                 nameLogin.requestFocus();
             }
             connection.close();
@@ -77,19 +77,20 @@ public class Login {
             throw new RuntimeException(e);
         }
     }
-    public void Login_Sign(){
+
+    public void Login_Sign() {
         try {
             Main.changeScene("Sign_In.fxml");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void thongBao() {
+    private void Alert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Login Successfully");
+        alert.setTitle("Đăng nhập thành công");
         alert.setHeaderText(null);
-        alert.setContentText("Login Successfully");
+        alert.setContentText("Đăng nhập thành công");
 
         alert.show();
 
@@ -97,6 +98,4 @@ public class Login {
         timeline.setCycleCount(1);
         timeline.play();
     }
-
-
 }
