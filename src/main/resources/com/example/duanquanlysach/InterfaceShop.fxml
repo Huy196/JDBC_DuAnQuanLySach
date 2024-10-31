@@ -1,97 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="790.0" prefWidth="1543.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Main">
-   <top>
-      <Pane prefHeight="232.0" prefWidth="972.0" style="-fx-background-color: #CCFFFF" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="121.0" fitWidth="273.0" layoutX="29.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Image/logo.png" />
-               </image>
-            </ImageView>
-            <TextField layoutX="470.0" layoutY="48.0" prefHeight="43.0" prefWidth="560.0" />
-            <Button layoutX="1037.0" layoutY="47.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="87.0" text="Tìm kiếm" />
-            <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="1255.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Image/cart.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="1189.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Image/donhang.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="55.0" fitWidth="84.0" layoutX="1326.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Image/img.png" />
-               </image>
-            </ImageView>
-            <HBox layoutX="-3.0" layoutY="138.0" prefHeight="94.0" prefWidth="1543.0" style="-fx-background-color: #FAE6FA">
+<BorderPane prefHeight="792.0" prefWidth="1543.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.ViewShopSellBookController">
+    <top>
+        <Pane prefHeight="150.0" prefWidth="1543.0" style="-fx-background-color: #CCFFFF" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="121.0" fitWidth="273.0" layoutX="29.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Image/logo.png" />
+                    </image>
+                </ImageView>
+                <TextField layoutX="470.0" layoutY="24.0" prefHeight="36.0" prefWidth="560.0" />
+                <Button layoutX="1037.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" text="Tìm kiếm" />
+                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="1236.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Image/cart.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="1175.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Image/donhang.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="1300.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Image/img.png" />
+                    </image>
+                </ImageView>
+                <HBox layoutX="-3.0" layoutY="91.0" prefHeight="61.0" prefWidth="1543.0" style="-fx-background-color: #FAE6FA">
                <children>
-                  <Pane prefHeight="94.0" prefWidth="1546.0">
-                     <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="209.0" text="Home" textOverrun="CENTER_ELLIPSIS">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </Pane>
-               </children></HBox>
-            <Hyperlink layoutX="1390.0" layoutY="43.0" prefHeight="54.0" prefWidth="143.0" style="-fx-background-color: white" text="Đăng Xuất">
-               <graphic>
-                  <ImageView fitHeight="44.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Image/exit.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Hyperlink>
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <Pane prefHeight="510.0" prefWidth="1466.0" BorderPane.alignment="CENTER">
-         <children>
-            <Pane layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="200.0" style="-fx-border-color: #524e4e;">
-               <children>
-                  <ImageView fitHeight="104.0" fitWidth="189.0" layoutX="5.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-                  <VBox layoutX="5.0" layoutY="127.0" prefHeight="75.0" prefWidth="192.0">
-                     <children>
-                        <Label contentDisplay="CENTER" prefHeight="34.0" prefWidth="198.0" textAlignment="CENTER">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="34.0" prefWidth="204.0" style="-fx-text-fill: red;">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <graphic>
-                              <Label prefHeight="27.0" prefWidth="15.0" style="-fx-text-fill: red;" text="₫">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </graphic>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="212.0" prefHeight="37.0" prefWidth="198.0" text="Chi tiết">
-                     <font>
+                          <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="209.0" text="Home" textOverrun="CENTER_ELLIPSIS">
+                              <font>
+                                  <Font size="30.0" />
+                              </font>
+                          </Hyperlink>
+               </children>
+                </HBox>
+                <Hyperlink layoutX="1377.0" layoutY="18.0" onAction="#logOff" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: white" text="Đăng Xuất">
+                    <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Image/exit.jpg" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
                         <Font size="15.0" />
-                     </font>
-                  </Hyperlink>
-               </children></Pane>
-         </children>
-      </Pane>
-   </center>
+                    </font>
+                </Hyperlink>
+                  <Pane layoutX="59.0" layoutY="82.0" prefHeight="52.0" prefWidth="1543.0" />
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <VBox prefHeight="568.0" prefWidth="1543.0">
+            <ScrollPane layoutX="31.0" layoutY="7.0" prefHeight="642.0" prefWidth="1543.0">
+                <FlowPane fx:id="hBox" alignment="CENTER_LEFT" layoutX="16.0" layoutY="24.0" prefHeight="696.0" prefWidth="1517.0">
+                    <padding>
+                        <Insets bottom="20.0" left="120.0" right="20.0" top="40.0" />
+                    </padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
 </BorderPane>

@@ -56,7 +56,7 @@ public class Login {
                             Alert();
                             Main.changeScene("LoginInterface.fxml");
                         } else {
-                            System.out.println("Đăng nhập vào màn hình người dùng");
+                            Main.changeScene("InterfaceShop.fxml");
                             falsePassword.setText("");
                         }
                     } else {

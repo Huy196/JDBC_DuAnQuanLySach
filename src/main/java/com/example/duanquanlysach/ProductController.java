@@ -197,7 +197,7 @@ public class ProductController implements Initializable {
                         resultSet.getString("NoiDung"),
                         resultSet.getInt("NamXuatBan"),
                         resultSet.getInt("MaNXB"),
-                        resultSet.getDouble("GiaSach"),
+                        resultSet.getInt("GiaSach"),
                         resultSet.getInt("SoLuong"),
                         resultSet.getInt("MaLoaiSach"),
                         resultSet.getString("TrangThai")

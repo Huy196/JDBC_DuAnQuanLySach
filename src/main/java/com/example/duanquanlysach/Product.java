@@ -8,12 +8,12 @@ public class Product {
     private String noiDung;
     private int namXB;
     private int maNXB;
-    private double giaSach;
+    private int giaSach;
     private int soLuong;
     private int maLoaiSach;
     private String trangThai;
 
-    public Product(int maSach,String anh, String tenSach, String tacGia, String noiDung, int namXB, int maNXB, double giaSach, int soLuong, int maLoaiSach, String trangThai) {
+    public Product(int maSach,String anh, String tenSach, String tacGia, String noiDung, int namXB, int maNXB, int giaSach, int soLuong, int maLoaiSach, String trangThai) {
         this.maSach = maSach;
         this.tenSach = tenSach;
         this.tacGia = tacGia;
@@ -91,7 +91,7 @@ public class Product {
         return giaSach;
     }
 
-    public void setGiaSach(double giaSach) {
+    public void setGiaSach(int giaSach) {
         this.giaSach = giaSach;
     }
 
