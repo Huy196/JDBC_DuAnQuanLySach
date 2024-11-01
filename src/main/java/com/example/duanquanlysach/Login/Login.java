@@ -1,6 +1,7 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.Login;
 
 import ConnectionDatabase.ConnectionDatabase;
+import com.example.duanquanlysach.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -56,7 +57,7 @@ public class Login {
                             Alert();
                             Main.changeScene("LoginInterface.fxml");
                         } else {
-                            System.out.println("Đăng nhập vào màn hình người dùng");
+                            Main.changeScene("InterfaceShop.fxml");
                             falsePassword.setText("");
                         }
                     } else {

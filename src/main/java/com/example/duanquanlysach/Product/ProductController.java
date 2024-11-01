@@ -1,6 +1,7 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.Product;
 
 import ConnectionDatabase.ConnectionDatabase;
+import com.example.duanquanlysach.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -130,7 +131,6 @@ public class ProductController implements Initializable {
             Parent root = loader.load();
 
             Functoin_ProductCotroller controller = loader.getController();
-
             controller.setProductData(product);
 
             Stage stage = new Stage();
@@ -197,7 +197,7 @@ public class ProductController implements Initializable {
                         resultSet.getString("NoiDung"),
                         resultSet.getInt("NamXuatBan"),
                         resultSet.getInt("MaNXB"),
-                        resultSet.getDouble("GiaSach"),
+                        resultSet.getInt("GiaSach"),
                         resultSet.getInt("SoLuong"),
                         resultSet.getInt("MaLoaiSach"),
                         resultSet.getString("TrangThai")

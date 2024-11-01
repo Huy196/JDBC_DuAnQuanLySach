@@ -1,4 +1,4 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.Product;
 
 public class Product {
     private int maSach;
@@ -8,12 +8,12 @@ public class Product {
     private String noiDung;
     private int namXB;
     private int maNXB;
-    private double giaSach;
+    private int giaSach;
     private int soLuong;
     private int maLoaiSach;
     private String trangThai;
 
-    public Product(int maSach,String anh, String tenSach, String tacGia, String noiDung, int namXB, int maNXB, double giaSach, int soLuong, int maLoaiSach, String trangThai) {
+    public Product(int maSach,String anh, String tenSach, String tacGia, String noiDung, int namXB, int maNXB, int giaSach, int soLuong, int maLoaiSach, String trangThai) {
         this.maSach = maSach;
         this.tenSach = tenSach;
         this.tacGia = tacGia;
@@ -29,6 +29,13 @@ public class Product {
 
     public Product() {
 
+    }
+
+    public Product(int id, String name, int price, String imagePath) {
+        this.maSach = id;
+        this.tenSach = name;
+        this.giaSach = price;
+        this.Anh = imagePath;
     }
 
     public String getAnh() {
@@ -87,11 +94,11 @@ public class Product {
         this.maNXB = maNXB;
     }
 
-    public double getGiaSach() {
+    public int getGiaSach() {
         return giaSach;
     }
 
-    public void setGiaSach(double giaSach) {
+    public void setGiaSach(int giaSach) {
         this.giaSach = giaSach;
     }
 
