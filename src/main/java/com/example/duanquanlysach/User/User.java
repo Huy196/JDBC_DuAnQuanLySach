@@ -1,4 +1,4 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.User;
 
 public class User {
     private int maNguoiDung;

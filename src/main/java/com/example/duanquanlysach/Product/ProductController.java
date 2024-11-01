@@ -1,6 +1,7 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.Product;
 
 import ConnectionDatabase.ConnectionDatabase;
+import com.example.duanquanlysach.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -130,7 +131,6 @@ public class ProductController implements Initializable {
             Parent root = loader.load();
 
             Functoin_ProductCotroller controller = loader.getController();
-
             controller.setProductData(product);
 
             Stage stage = new Stage();

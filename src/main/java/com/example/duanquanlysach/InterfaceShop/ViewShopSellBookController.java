@@ -1,13 +1,20 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.InterfaceShop;
 
 import ConnectionDatabase.ConnectionDatabase;
+import com.example.duanquanlysach.Main;
+import com.example.duanquanlysach.Product.Product;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,9 +22,13 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ViewShopSellBookController implements Initializable {
+    private Product product;
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private FlowPane hBox;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadProductData();
@@ -49,7 +60,6 @@ public class ViewShopSellBookController implements Initializable {
 
     private VBox createProductBox(int id, String name, int price, String imagePath) {
         ImageView imageView = new ImageView(new Image(imagePath));
-//        imageView.setPreserveRatio(true);
         imageView.setFitHeight(210);
         imageView.setFitWidth(265);
 
@@ -59,25 +69,76 @@ public class ViewShopSellBookController implements Initializable {
         Label priceLabel = new Label(price + "  ₫");
         priceLabel.setStyle("-fx-text-fill: red; -fx-font-size: 17px;");
 
+        hBox.setPrefWrapLength(20);
+        hBox.setHgap(50);
+        hBox.setVgap(50);
 
         Hyperlink detailLink = new Hyperlink("Chi tiết");
         detailLink.setOnAction(event -> showProductDetails(id));
 
-        VBox productBox = new VBox(imageView, nameLabel, priceLabel, detailLink);
-        productBox.setSpacing(10);
-        hBox.setPrefWrapLength(20);
-        hBox.setHgap(50);
-        hBox.setVgap(50);
-        productBox.setFillWidth(true);
+                VBox productBox = new VBox(imageView, nameLabel, priceLabel, detailLink);
+
 
         productBox.setStyle("-fx-border-color: #524e4e; -fx-padding: 10; -fx-background-color: #f9f9f9;");
 
         return productBox;
     }
 
-    private void showProductDetails(int productId) {
-        System.out.println("Showing details for product ID: " + productId);
+    private void showProductDetails(int maSach) {
+        Product product1 = getProductByMaSach(maSach);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceShop_Detail_Product.fxml"));
+            Parent root = loader.load();
+
+            ProductDetialController productDetialController = loader.getController();
+
+            productDetialController.setProductDetailData(product1);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public Product getProductByMaSach(int maSach) {
+
+        String SQL = "SELECT * FROM Sach WHERE MaSach = ?";
+
+        try {
+            ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+            var connection = connectionDatabase.connection();
+
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setInt(1, maSach);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Product product = new Product(
+                        resultSet.getInt("MaSach"),
+                        resultSet.getString("Anh"),
+                        resultSet.getString("TenSach"),
+                        resultSet.getString("TacGia"),
+                        resultSet.getString("NoiDung"),
+                        resultSet.getInt("NamXuatBan"),
+                        resultSet.getInt("MaNXB"),
+                        resultSet.getInt("GiaSach"),
+                        resultSet.getInt("SoLuong"),
+                        resultSet.getInt("MaLoaiSach"),
+                        resultSet.getString("TrangThai")
+                );
+                return product;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     @FXML
     public void logOff() {

@@ -1,4 +1,4 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.Product;
 
 public class Product {
     private int maSach;
@@ -29,6 +29,13 @@ public class Product {
 
     public Product() {
 
+    }
+
+    public Product(int id, String name, int price, String imagePath) {
+        this.maSach = id;
+        this.tenSach = name;
+        this.giaSach = price;
+        this.Anh = imagePath;
     }
 
     public String getAnh() {
@@ -87,7 +94,7 @@ public class Product {
         this.maNXB = maNXB;
     }
 
-    public double getGiaSach() {
+    public int getGiaSach() {
         return giaSach;
     }
 

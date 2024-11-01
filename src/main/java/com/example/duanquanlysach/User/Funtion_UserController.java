@@ -1,5 +1,6 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.User;
 
+import com.example.duanquanlysach.User.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;

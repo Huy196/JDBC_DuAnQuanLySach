@@ -1,6 +1,7 @@
-package com.example.duanquanlysach;
+package com.example.duanquanlysach.Product;
 
 import ConnectionDatabase.ConnectionDatabase;
+import com.example.duanquanlysach.Product.Product;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="590.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.InterfaceShop.ProductDetialController">
+   <children>
+      <Pane prefHeight="622.0" prefWidth="1100.0" style="-fx-border-width: red;">
+         <children>
+            <Pane prefHeight="622.0" prefWidth="513.0">
+               <children>
+                  <ImageView fx:id="imageProductDetail" fitHeight="361.0" fitWidth="439.0" layoutX="37.0" layoutY="59.0" pickOnBounds="true" smooth="false" />
+                  <Button layoutX="273.0" layoutY="483.0"  mnemonicParsing="false" prefHeight="50.0" prefWidth="203.0" style="-fx-background-color: red;-fx-font-weight: bold;-fx-text-fill: white" text="Mua">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="37.0" layoutY="483.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="194.0" style="-fx-border-color: red;-fx-font-weight: bold;-fx-background-color: white;-fx-text-fill: red" text="Thêm vào giỏ hàng">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" style="-fx: red;">
+                           <image>
+                              <Image url="@../../../../Image/cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane layoutX="556.0" prefHeight="254.0" prefWidth="544.0">
+               <children>
+                  <Label fx:id="nameProductDetail" layoutX="6.0" layoutY="9.0" prefHeight="43.0" prefWidth="427.0" style="-fx-font-weight: bold" text="name">
+                     <font>
+                        <Font size="40.0" />
+                     </font></Label>
+                  <Label layoutX="6.0" layoutY="71.0" prefHeight="35.0" prefWidth="97.0" text="Nhà xuất bản :">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="publishingHouseProductDetail" layoutX="102.0" layoutY="72.0" prefHeight="35.0" prefWidth="439.0" style="-fx-font-weight: bold ">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label layoutX="6.0" layoutY="109.0" prefHeight="35.0" prefWidth="61.0" text="Tác giả :">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="authorProductDetail" layoutX="72.0" layoutY="109.0" prefHeight="35.0" prefWidth="439.0" style="-fx-font-weight: bold">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <Label fx:id="priceProductDetail" layoutX="6.0" layoutY="152.0" prefHeight="50.0" prefWidth="291.0" style="-fx-text-fill: red ; -fx-font-weight: bold" text="Giá">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="214.0" prefHeight="35.0" prefWidth="111.0" text="Số lượng :">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Spinner initialValue="1" layoutX="108.0" layoutY="216.0" max="1000" min="1" prefHeight="30.0" prefWidth="123.0" style="-fx-font-size: 14px;" />
+
+               </children>
+            </Pane>
+            <Pane layoutX="553.0" layoutY="268.0" prefHeight="354.0" prefWidth="544.0">
+               <children>
+                  <Label layoutX="7.0" layoutY="6.0" prefHeight="30.0" prefWidth="291.0" style="-fx-font-weight: bold 9.0" text="Thông tin chi tiết">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="maProductDetail" layoutX="7.0" layoutY="47.0" prefHeight="45.0" prefWidth="521.0" text="Label">
+                     <graphic>
+                        <Label prefHeight="29.0" prefWidth="140.0" text="Mã hàng ">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="yearProductDetail" layoutX="5.0" layoutY="164.0" prefHeight="45.0" prefWidth="521.0" text="Label">
+                     <graphic>
+                        <Label prefHeight="30.0" prefWidth="142.0" text="Năm XB">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="contentProductDetail" layoutX="5.0" layoutY="193.0" prefHeight="156.0" prefWidth="521.0" text="Nội dung dài của sản phẩm sẽ tự động xuống dòng nếu nó vượt quá chiều rộng choojrgpojs[gjprodago;rehgohardhghedohgordhphdprgpdrpghrdphjpdohjpod phép." wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+
+                  <Label fx:id="typeProductDetail" layoutX="6.0" layoutY="105.0" prefHeight="45.0" prefWidth="521.0" text="Label">
+                     <graphic>
+                        <Label prefHeight="29.0" prefWidth="141.0" text="Loại sách">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
