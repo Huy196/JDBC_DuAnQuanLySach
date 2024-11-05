@@ -17,7 +17,7 @@
                 </ImageView>
                 <TextField layoutX="470.0" layoutY="24.0" prefHeight="36.0" prefWidth="560.0" />
                 <Button layoutX="1037.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" text="Tìm kiếm" />
-                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="1236.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView onMouseClicked="#showProductToCart" fitHeight="43.0" fitWidth="49.0" layoutX="1236.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../Image/cart.png" />
                     </image>
