@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="547.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.CartOrder.CarController">
+    <top>
+        <Label alignment="CENTER" prefHeight="64.0" prefWidth="995.0" style="-fx-font-size: 25px; -fx-font-weight: bold;" text="Giỏ hàng" />
+    </top>
+    <bottom>
+        <HBox prefHeight="47.0" prefWidth="482.0" spacing="30" style="-fx-padding: 10px">
+            <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="557.0" style="-fx-text-fill: red" text="₫">
+            <font>
+               <Font size="23.0" />
+            </font>
+            <graphic>
+               <Label fx:id="sumAllProduct" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="150.0" style="-fx-text-fill: red" text="ToTal: 0.00  ">
+                  <font>
+                     <Font size="25.0" />
+                  </font>
+               </Label>
+            </graphic></Label>
+            <Button prefHeight="38.0" prefWidth="226.0" style="-fx-padding: 10px; -fx-background-color: #FF8C00; -fx-text-fill: white" text="Đặt hàng" />
+        </HBox>
+    </bottom>
+    <center>
+        <TableView fx:id="tableView" prefHeight="424.0" prefWidth="967.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="select" minWidth="0.0" prefWidth="47.99999922513962" text="Chọn" />
+                <TableColumn fx:id="MaDH" prefWidth="58.39999771118164" text="MaDH" />
+                <TableColumn fx:id="image" prefWidth="278.59999084472656" text="Hình Ảnh" />
+                <TableColumn fx:id="name" prefWidth="165.00003051757812" text="Tên Sách" />
+                <TableColumn fx:id="price" prefWidth="119.0" text="Giá" />
+                <TableColumn fx:id="quantity" prefWidth="107.4000244140625" text="Số Lượng" />
+                <TableColumn fx:id="sum" prefWidth="138.800048828125" text="Thành Tiền" />
+                <TableColumn fx:id="deleteButton" minWidth="0.0" prefWidth="77.199951171875" text="Xóa" />
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

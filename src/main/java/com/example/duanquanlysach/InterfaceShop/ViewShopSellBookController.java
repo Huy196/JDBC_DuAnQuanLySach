@@ -52,7 +52,6 @@ public class ViewShopSellBookController implements Initializable {
                 VBox productBox = createProductBox(id, name, price, imagePath);
                 hBox.getChildren().add(productBox); // Thêm sản phẩm vào hBox
             }
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -98,6 +97,18 @@ public class ViewShopSellBookController implements Initializable {
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void showProductToCart(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceShop_Cart.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

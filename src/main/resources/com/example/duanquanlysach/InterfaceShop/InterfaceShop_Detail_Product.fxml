@@ -17,7 +17,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="37.0" layoutY="483.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="194.0" style="-fx-border-color: red;-fx-font-weight: bold;-fx-background-color: white;-fx-text-fill: red" text="Thêm vào giỏ hàng">
+                  <Button onAction="#addProductToCart" layoutX="37.0" layoutY="483.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="194.0" style="-fx-border-color: red;-fx-font-weight: bold;-fx-background-color: white;-fx-text-fill: red" text="Thêm vào giỏ hàng">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" style="-fx: red;">
                            <image>
@@ -63,7 +63,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Spinner initialValue="1" layoutX="108.0" layoutY="216.0" max="1000" min="1" prefHeight="30.0" prefWidth="123.0" style="-fx-font-size: 14px;" />
+                  <Spinner fx:id="quatityProductDetail" initialValue="1" layoutX="108.0" layoutY="216.0" max="1000" min="1" prefHeight="30.0" prefWidth="123.0" style="-fx-font-size: 14px;" />
 
                </children>
             </Pane>

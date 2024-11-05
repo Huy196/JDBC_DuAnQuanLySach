@@ -49,6 +49,8 @@ public class Login {
 
                     String trangThai = resultSet_MatKhau.getString("TrangThai");
                     if (trangThai.equalsIgnoreCase("On")) {
+                        CurrentUser.login(nameLogin.getText(), password.getText());
+
                         if (role.equalsIgnoreCase("Quản Lý")) {
                             nameLogin.clear();
                             password.clear();
