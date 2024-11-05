@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Login {
+    private int maNguoiDung;
     @FXML
     private TextField nameLogin;
     @FXML
@@ -49,7 +50,8 @@ public class Login {
 
                     String trangThai = resultSet_MatKhau.getString("TrangThai");
                     if (trangThai.equalsIgnoreCase("On")) {
-                        CurrentUser.login(nameLogin.getText(), password.getText());
+                        int maNguoiDung = resultSet_MatKhau.getInt("MaNguoiDung");
+                        CurrentUser.login(nameLogin.getText(), password.getText(),maNguoiDung);
 
                         if (role.equalsIgnoreCase("Quản Lý")) {
                             nameLogin.clear();
@@ -83,6 +85,7 @@ public class Login {
 
     public void Login_Sign() {
         try {
+            CurrentUser.logout();
             Main.changeScene("Sign_In.fxml");
         } catch (IOException e) {
             e.printStackTrace();

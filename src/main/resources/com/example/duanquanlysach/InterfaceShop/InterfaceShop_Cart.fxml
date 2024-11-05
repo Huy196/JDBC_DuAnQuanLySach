@@ -21,7 +21,7 @@
                   </font>
                </Label>
             </graphic></Label>
-            <Button prefHeight="38.0" prefWidth="226.0" style="-fx-padding: 10px; -fx-background-color: #FF8C00; -fx-text-fill: white" text="Đặt hàng" />
+            <Button onAction= "#order" prefHeight="38.0" prefWidth="226.0" style="-fx-padding: 10px; -fx-background-color: #FF8C00; -fx-text-fill: white" text="Đặt hàng" />
         </HBox>
     </bottom>
     <center>
