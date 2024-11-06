@@ -22,7 +22,7 @@
                         <Image url="@../../../Image/cart.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="1175.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView onMouseClicked="#showProductOrder" fitHeight="42.0" fitWidth="71.0" layoutX="1175.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../Image/donhang.png" />
                     </image>

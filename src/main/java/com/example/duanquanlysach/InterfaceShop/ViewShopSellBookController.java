@@ -112,6 +112,9 @@ public class ViewShopSellBookController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void showProductOrder(){
+
+    }
 
     public Product getProductByMaSach(int maSach) {
 
