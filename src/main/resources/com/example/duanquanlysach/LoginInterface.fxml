@@ -4,15 +4,15 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox spacing="10" prefHeight="842.0" prefWidth="1395.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Product.ProductController">
+<HBox prefHeight="842.0" prefWidth="1395.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Product.ProductController">
    <children>
       <VBox layoutX="5.0" prefHeight="842.0" prefWidth="235.0" spacing="5">
          <children>
-            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="171.0" prefWidth="274.0" style="-fx-font-size: 20;" text="HOME" />
+            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="171.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Trang Chủ" />
 <!--            <Button alignment="BASELINE_CENTER" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Nhân viên" />-->
             <Button alignment="BASELINE_CENTER" onAction="#showProduct" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Sản phẩm" />
 <!--            <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="276.0" style="-fx-font-size: 20;" text="Đơn hàng" />-->
-            <Button alignment="BASELINE_CENTER" onAction="#showUser" nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Khách hàng" />
+            <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" onAction="#showUser" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Khách hàng" />
 <!--            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Hóa đơn" />-->
             <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="197.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Đăng Xuất" />
          </children>
@@ -42,7 +42,7 @@
                         <TableColumn fx:id="functionColumn" prefWidth="126.8" text="Chức Năng" />
                      </columns>
                   </TableView>
-                  <Button  alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="301.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+                  <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="301.0" text="Thêm Sản Phẩm" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
                </children>
             </HBox>
          </children>
