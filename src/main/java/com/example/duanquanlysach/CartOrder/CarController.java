@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
@@ -32,8 +33,6 @@ public class CarController implements Initializable {
     private TableView<CartOrder> tableView;
     @FXML
     private TableColumn<CartOrder, CheckBox> select;
-    @FXML
-    private TableColumn<CartOrder, Integer> MaDH;
     @FXML
     private TableColumn<CartOrder, String> image;
     @FXML
@@ -70,15 +69,14 @@ public class CarController implements Initializable {
 
                     checkBox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
                         cartOrder.setSelected(isSelected);
+                        cartOrder.setCheckBox(isSelected);
+                        updateCheckBoxCar(cartOrder.getMaGH(), cartOrder.getCheckBox());
                         calculateTotalSum();
                     });
-
                     setGraphic(checkBox);
-
                 }
             }
         });
-        MaDH.setCellValueFactory(new PropertyValueFactory<CartOrder, Integer>("maDH"));
         image.setCellValueFactory(new PropertyValueFactory<CartOrder, String>("hinhAnh"));
         image.setCellFactory(column -> new TableCell<CartOrder, String>() {
             private final ImageView imageView = new ImageView();
@@ -154,7 +152,7 @@ public class CarController implements Initializable {
                     CartOrder order = getTableView().getItems().get(getIndex());
                     deleteBtn.setOnAction(event -> {
                         cartOrderObservableList.remove(order);
-                        deleteItemFromDatabase(order.getMaDH());
+                        deleteItemFromDatabase(order.getMaGH());
                         calculateTotalSum();
                     });
                     setGraphic(deleteBtn);
@@ -166,7 +164,6 @@ public class CarController implements Initializable {
 
     private void calculateTotalSum() {
         int sum = cartOrderObservableList.stream().filter(CartOrder::isSelected).mapToInt(order -> order.getGia() * order.getSoLuong()).sum();
-
         sumAllProduct.setText(String.valueOf(sum));
     }
 
@@ -174,7 +171,7 @@ public class CarController implements Initializable {
         tableView.refresh();
     }
 
-    public int getMaNguoiDung() {
+    public int getMaNguoiDung_1() {
         String name = CurrentUser.getInstance().getUsername();
         String pass = CurrentUser.getInstance().getPassword();
 
@@ -205,10 +202,10 @@ public class CarController implements Initializable {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
             var connection = connectionDatabase.connection();
 
-            int maNguoiDung = getMaNguoiDung();
+            int maNguoiDung = getMaNguoiDung_1();
 
 
-            String SQL = "SELECT * FROM donhang where MaNguoiDung = ? and TrangThai = 'Chờ thanh toán'";
+            String SQL = "SELECT * FROM GioHang where MaNguoiDung = ? and TrangThai = 0 ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setInt(1, maNguoiDung);
@@ -217,12 +214,11 @@ public class CarController implements Initializable {
             cartOrderObservableList.clear();
             while (resultSet.next()) {
                 CartOrder cartOrder = new CartOrder(
-                        resultSet.getInt("MaDH"),
-                        resultSet.getInt("MaNguoiDung"),
+                        resultSet.getInt("MaGH"),
                         resultSet.getString("Anh"),
-                        resultSet.getString("TenSach"),
-                        resultSet.getInt("SoLuong"),
-                        resultSet.getInt("GiaSach")
+                        resultSet.getString("Ten"),
+                        resultSet.getInt("Gia"),
+                        resultSet.getInt("SoLuong")
                 );
                 cartOrderObservableList.add(cartOrder);
             }
@@ -233,31 +229,106 @@ public class CarController implements Initializable {
     }
 
     @FXML
-    public void order() {
+    private void order() {
+        boolean hasSelectedItems = tableView.getItems().stream()
+                .anyMatch(CartOrder::getCheckBox);
+
+        if (hasSelectedItems) {
+            int orderID = addOrder();
+            for (CartOrder cartOrder : tableView.getItems()) {
+                if (cartOrder.getCheckBox()) {
+                    int cartID = cartOrder.getMaGH();
+                    addCartOrder(cartID, orderID);
+                    updateStatusCar();
+                }
+            }
+        } else {
+            Alert("Vui lòng chọn ít nhất một sản phẩm để đặt hàng!");
+        }
+    }
+
+    private void updateCheckBoxCar(int MaGH, boolean checkbox) {
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
 
-        LocalDateTime currentDateTime = LocalDateTime.now();
+        String SQL = "update GioHang set CheckBox = ? where MaGH = ?";
 
-        String SQL = "update donhang set Soluong = ?,TrangThai = 'Chờ xác nhận', NgayDat = ? where MaDH = ?";
-
-        ObservableList<CartOrder> selectedOrders = FXCollections.observableArrayList();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            for (CartOrder order : cartOrderObservableList) {
-                if (order.isSelected()) {
-                    preparedStatement.setInt(1, order.getSoLuong());
-                    preparedStatement.setTimestamp(2, java.sql.Timestamp.valueOf(currentDateTime));
-                    preparedStatement.setInt(3, order.getMaDH());
-                    preparedStatement.executeUpdate();
+            preparedStatement.setBoolean(1, checkbox);
+            preparedStatement.setInt(2, MaGH);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addCartOrder(int MaGH, int MaDH) {
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        var connection = connectionDatabase.connection();
+
+        String SQl = "insert into GioHang_DonHang(MaDH,MaGH)" +
+                "value (?,?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQl);
+
+            preparedStatement.setInt(1, MaDH);
+            preparedStatement.setInt(2, MaGH);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int addOrder() {
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        var connection = connectionDatabase.connection();
+
+        int maNguoiDung_1 = getMaNguoiDung_1();
+        LocalDateTime time = LocalDateTime.now();
+
+        String SQL = "insert into DonHang(MaNguoiDung,NgayDat,TrangThai)" +
+                "value(?,?,'Chờ xác nhận')";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+
+            preparedStatement.setInt(1, maNguoiDung_1);
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(time));
+
+            int row = preparedStatement.executeUpdate();
+            if (row > 0) {
+                Alert("Tạo đơn hàng thành công!");
+                closeCartInterface();
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
                 }
-
+            } else {
+                Alert("Vui lòng chọn ít nhất 1 sản phẩm!");
             }
-            cartOrderObservableList.removeAll(selectedOrders);
-            Alert("Đã đặt hàng chờ xác nhận!");
-            closeCartInterface();
-            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 
+    private void updateStatusCar() {
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        var connection = connectionDatabase.connection();
+
+        String SQL = "update GioHang set TrangThai = ? where CheckBox = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setBoolean(1, true);
+            preparedStatement.setBoolean(2, true);
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -268,23 +339,15 @@ public class CarController implements Initializable {
         stage.hide();
     }
 
-    private void saveInformationOnInvoice() {
-        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
-        var connection = connectionDatabase.connection();
-
-//        String SQL= "/"
-    }
-
-    private void deleteItemFromDatabase(int maDH) {
+    private void deleteItemFromDatabase(int maGH) {
         try {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
             var connection = connectionDatabase.connection();
 
-            String SQL = "delete from donhang where MaDH = ?";
+            String SQL = "delete from donhang where MaGH = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1, maDH);
-
+            preparedStatement.setInt(1, maGH);
             int row = preparedStatement.executeUpdate();
             if (row > 0) {
                 Alert("Đã Xóa");
@@ -299,9 +362,7 @@ public class CarController implements Initializable {
         alert.setTitle("Thông Báo");
         alert.setHeaderText(null);
         alert.setContentText(text);
-
         alert.show();
-
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.9), event -> alert.hide()));
         timeline.setCycleCount(1);
         timeline.play();
