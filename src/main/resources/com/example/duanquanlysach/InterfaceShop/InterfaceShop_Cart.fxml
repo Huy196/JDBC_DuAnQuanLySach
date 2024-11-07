@@ -28,7 +28,6 @@
         <TableView fx:id="tableView" prefHeight="424.0" prefWidth="967.0" BorderPane.alignment="CENTER">
             <columns>
                 <TableColumn fx:id="select" minWidth="0.0" prefWidth="47.99999922513962" text="Chọn" />
-                <TableColumn fx:id="MaDH" prefWidth="58.39999771118164" text="MaDH" />
                 <TableColumn fx:id="image" prefWidth="278.59999084472656" text="Hình Ảnh" />
                 <TableColumn fx:id="name" prefWidth="165.00003051757812" text="Tên Sách" />
                 <TableColumn fx:id="price" prefWidth="119.0" text="Giá" />

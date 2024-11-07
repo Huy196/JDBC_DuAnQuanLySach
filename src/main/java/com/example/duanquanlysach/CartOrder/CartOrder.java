@@ -2,32 +2,50 @@ package com.example.duanquanlysach.CartOrder;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.scene.image.ImageView;
 
 public class CartOrder {
-    private int maDH;
+    private int maGH;
     private int maSach;
     private int maNguoiDung;
     private String tenSach;
     private int gia;
     private int soLuong;
     private String hinhAnh;
+    private boolean checkBox;
+
+    public int getMaSach() {
+        return maSach;
+    }
+
+    public void setMaSach(int maSach) {
+        this.maSach = maSach;
+    }
+
+    public int getMaNguoiDung() {
+        return maNguoiDung;
+    }
+
+    public void setMaNguoiDung(int maNguoiDung) {
+        this.maNguoiDung = maNguoiDung;
+    }
+
+    public boolean getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(boolean checkBox) {
+        this.checkBox = checkBox;
+    }
 
     private BooleanProperty selected = new SimpleBooleanProperty(false);
 
 
-    public CartOrder(int maDH, int maNguoiDung, String anh, String tenSach, int soLuong, int giaSach) {
-        this.maDH = maDH;
-        this.maNguoiDung = maNguoiDung;
+    public CartOrder(int maGH, String anh, String tenSach, int giaSach, int soLuong) {
+        this.maGH = maGH;
         this.hinhAnh = anh;
         this.tenSach = tenSach;
         this.soLuong = soLuong;
         this.gia = giaSach;
-    }
-
-    public BooleanProperty selectedProperty() {
-        return selected;
     }
 
     public boolean isSelected() {
@@ -38,12 +56,8 @@ public class CartOrder {
         this.selected.set(selected);
     }
 
-    public int getMaDH() {
-        return maDH;
-    }
-
-    public void setMaDH(int maDH) {
-        this.maDH = maDH;
+    public int getMaGH() {
+        return maGH;
     }
 
     public String getTenSach() {

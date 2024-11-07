@@ -68,25 +68,26 @@ public class ProductDetialController {
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
 
-        int idUser = getMaNguoiDung();
-        int idMaSach = product.getMaSach();
         int quatity = (int) quatityProductDetail.getValue();
+        int maSach = product.getMaSach();
+        int maNguoiDung = getMaNguoiDung();
         String image = product.getAnh();
         String name = product.getTenSach();
         int price = product.getGiaSach();
 
-        String SQL = "INSERT INTO donhang (MaNguoiDung, MaSach,Anh,TenSach,Soluong,GiaSach, TrangThai)" +
-                " VALUES (?,?,?,?,?,?,'Chờ thanh toán') ";
+        String SQL = "INSERT INTO GioHang (MaNguoiDung,MaSach,Anh,Ten,Soluong,Gia)" +
+                " VALUES (?,?,?,?,?,?) ";
 
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1,idUser);
-            preparedStatement.setInt(2,idMaSach);
+            preparedStatement.setInt(1,maNguoiDung);
+            preparedStatement.setInt(2,maSach);
             preparedStatement.setString(3,image);
             preparedStatement.setString(4,name);
             preparedStatement.setInt(5,quatity);
             preparedStatement.setInt(6,price);
+
 
             int row = preparedStatement.executeUpdate();
             if (row > 0){

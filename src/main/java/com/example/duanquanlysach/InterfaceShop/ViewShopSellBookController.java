@@ -37,7 +37,7 @@ public class ViewShopSellBookController implements Initializable {
     private void loadProductData() {
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
-        String query = "SELECT * FROM Sach";
+        String query = "SELECT * FROM Sach where TrangThai = 'Còn hàng'";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
