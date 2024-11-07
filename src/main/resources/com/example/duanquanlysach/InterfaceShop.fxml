@@ -17,12 +17,12 @@
                 </ImageView>
                 <TextField layoutX="470.0" layoutY="24.0" prefHeight="36.0" prefWidth="560.0" />
                 <Button layoutX="1037.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" text="Tìm kiếm" />
-                <ImageView onMouseClicked="#showProductToCart" fitHeight="43.0" fitWidth="49.0" layoutX="1236.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="1236.0" layoutY="22.0" onMouseClicked="#showProductToCart" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../Image/cart.png" />
                     </image>
                 </ImageView>
-                <ImageView onMouseClicked="#showProductOrder" fitHeight="42.0" fitWidth="71.0" layoutX="1175.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="1175.0" layoutY="22.0" onMouseClicked="#showProductOrder" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../Image/donhang.png" />
                     </image>
@@ -34,7 +34,7 @@
                 </ImageView>
                 <HBox layoutX="-3.0" layoutY="91.0" prefHeight="61.0" prefWidth="1543.0" style="-fx-background-color: #FAE6FA">
                <children>
-                          <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="209.0" text="Home" textOverrun="CENTER_ELLIPSIS">
+                          <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="209.0" text="Trang Chủ" textOverrun="CENTER_ELLIPSIS">
                               <font>
                                   <Font size="30.0" />
                               </font>
