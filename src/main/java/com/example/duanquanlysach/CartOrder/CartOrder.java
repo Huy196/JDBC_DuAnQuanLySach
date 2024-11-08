@@ -3,12 +3,14 @@ package com.example.duanquanlysach.CartOrder;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import java.math.BigDecimal;
+
 public class CartOrder {
     private int maGH;
     private int maSach;
     private int maNguoiDung;
     private String tenSach;
-    private int gia;
+    private BigDecimal gia;
     private int soLuong;
     private String hinhAnh;
     private boolean checkBox;
@@ -40,7 +42,7 @@ public class CartOrder {
     private BooleanProperty selected = new SimpleBooleanProperty(false);
 
 
-    public CartOrder(int maGH, String anh, String tenSach, int giaSach, int soLuong) {
+    public CartOrder(int maGH, String anh, String tenSach, BigDecimal giaSach, int soLuong) {
         this.maGH = maGH;
         this.hinhAnh = anh;
         this.tenSach = tenSach;
@@ -68,11 +70,11 @@ public class CartOrder {
         this.tenSach = tenSach;
     }
 
-    public int getGia() {
+    public BigDecimal getGia() {
         return gia;
     }
 
-    public void setGia(int gia) {
+    public void setGia(BigDecimal gia) {
         this.gia = gia;
     }
 

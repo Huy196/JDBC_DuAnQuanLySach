@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,8 +66,6 @@ public class Functoin_ProductCotroller {
     public void saveProduct() throws SQLException {
 
         try {
-
-
             if (nameProduct.getText().isEmpty()) {
                 highlightField(nameProduct);
                 nameProduct.requestFocus();
@@ -142,8 +141,6 @@ public class Functoin_ProductCotroller {
                 PreparedStatement preparedStatement = null;
 
 
-
-
                 int maLoaiSach = getMaLoaiSach((String) typeProduct.getValue());
                 int maNXB = getMaNXB((String) publishingHouseProduct.getValue());
 
@@ -152,7 +149,7 @@ public class Functoin_ProductCotroller {
                 String author = authorProduct.getText();
                 String content = contentProduct.getText();
                 int year = Integer.parseInt(yearProduct.getValue().toString());
-                double price = Double.parseDouble(priceProduct.getText());
+                BigDecimal price = new BigDecimal(priceProduct.getText());
                 int quantity = Integer.parseInt(quantityProduct.getText());
                 String status = statusProduct.getValue().toString();
                 String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
@@ -164,7 +161,7 @@ public class Functoin_ProductCotroller {
                 preparedStatement.setString(4, content);
                 preparedStatement.setInt(5, year);
                 preparedStatement.setInt(6, maNXB);
-                preparedStatement.setDouble(7, price);
+                preparedStatement.setBigDecimal(7, price);
                 preparedStatement.setInt(8, quantity);
                 preparedStatement.setInt(9, maLoaiSach);
                 preparedStatement.setString(10, status);
@@ -177,7 +174,7 @@ public class Functoin_ProductCotroller {
                     contentProduct.clear();
                     priceProduct.clear();
                     quantityProduct.clear();
-                }else {
+                } else {
                     Alert("Đã hủy thêm sản phẩm!");
                 }
                 connection.close();
@@ -188,11 +185,11 @@ public class Functoin_ProductCotroller {
     }
 
     private void highlightField(TextField field) {
-        field.setStyle("-fx-border-color: red; -fx-border-width: 2px;"); // Đặt viền đỏ
+        field.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
     }
 
     private void clearHighlight(TextField field) {
-        field.setStyle(""); // Xóa viền
+        field.setStyle("");
     }
 
     public int getMaLoaiSach(String typeProduct) {
@@ -262,7 +259,7 @@ public class Functoin_ProductCotroller {
                 String author = authorProduct.getText();
                 String content = contentProduct.getText();
                 int year = Integer.parseInt(yearProduct.getValue().toString());
-                double price = Double.parseDouble(priceProduct.getText());
+                BigDecimal price = BigDecimal.valueOf(Long.parseLong(priceProduct.getText()));
                 int quantity = Integer.parseInt(quantityProduct.getText());
                 String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
 
@@ -278,7 +275,7 @@ public class Functoin_ProductCotroller {
                 preparedStatement.setString(4, content);
                 preparedStatement.setInt(5, year);
                 preparedStatement.setInt(6, maNXB);
-                preparedStatement.setDouble(7, price);
+                preparedStatement.setBigDecimal(7, price);
                 preparedStatement.setInt(8, quantity);
                 preparedStatement.setInt(9, maLoaiSach);
                 preparedStatement.setInt(10, product.getMaSach());

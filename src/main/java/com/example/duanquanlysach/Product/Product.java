@@ -1,5 +1,8 @@
 package com.example.duanquanlysach.Product;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 public class Product {
     private int maSach;
     private String Anh;
@@ -8,12 +11,12 @@ public class Product {
     private String noiDung;
     private int namXB;
     private int maNXB;
-    private int giaSach;
+    private BigDecimal giaSach;
     private int soLuong;
     private int maLoaiSach;
     private String trangThai;
 
-    public Product(int maSach,String anh, String tenSach, String tacGia, String noiDung, int namXB, int maNXB, int giaSach, int soLuong, int maLoaiSach, String trangThai) {
+    public Product(int maSach,String anh, String tenSach, String tacGia, String noiDung, int namXB, int maNXB, BigDecimal giaSach, int soLuong, int maLoaiSach, String trangThai) {
         this.maSach = maSach;
         this.tenSach = tenSach;
         this.tacGia = tacGia;
@@ -31,7 +34,7 @@ public class Product {
 
     }
 
-    public Product(int id, String name, int price, String imagePath) {
+    public Product(int id, String name, BigDecimal price, String imagePath) {
         this.maSach = id;
         this.tenSach = name;
         this.giaSach = price;
@@ -94,11 +97,11 @@ public class Product {
         this.maNXB = maNXB;
     }
 
-    public int getGiaSach() {
+    public BigDecimal getGiaSach() {
         return giaSach;
     }
 
-    public void setGiaSach(int giaSach) {
+    public void setGiaSach(BigDecimal giaSach) {
         this.giaSach = giaSach;
     }
 

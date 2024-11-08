@@ -22,6 +22,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
@@ -38,7 +40,7 @@ public class CarController implements Initializable {
     @FXML
     private TableColumn<CartOrder, String> name;
     @FXML
-    private TableColumn<CartOrder, Integer> price;
+    private TableColumn<CartOrder, BigDecimal> price;
     @FXML
     private TableColumn<CartOrder, Integer> quantity;
     @FXML
@@ -100,7 +102,7 @@ public class CarController implements Initializable {
 
         name.setCellValueFactory(new PropertyValueFactory<CartOrder, String>("tenSach"));
         quantity.setCellValueFactory(new PropertyValueFactory<CartOrder, Integer>("soLuong"));
-        price.setCellValueFactory(new PropertyValueFactory<CartOrder, Integer>("gia"));
+        price.setCellValueFactory(new PropertyValueFactory<CartOrder, BigDecimal>("gia"));
         quantity.setCellFactory(column -> new TableCell<CartOrder, Integer>() {
             private Spinner<Integer> spinner;
 
@@ -133,9 +135,12 @@ public class CarController implements Initializable {
                     setGraphic(null);
                 } else {
                     CartOrder order = getTableView().getItems().get(getIndex());
-                    int total = order.getGia() * order.getSoLuong();
+                    BigDecimal price = new BigDecimal(String.valueOf(order.getGia()));
+                    BigDecimal quantity = new BigDecimal(order.getSoLuong());
+                    BigDecimal total = price.multiply(quantity);
                     sum.setText(String.valueOf(total));
                     setGraphic(sum);
+
                 }
             }
         });
@@ -163,8 +168,12 @@ public class CarController implements Initializable {
     }
 
     private void calculateTotalSum() {
-        int sum = cartOrderObservableList.stream().filter(CartOrder::isSelected).mapToInt(order -> order.getGia() * order.getSoLuong()).sum();
-        sumAllProduct.setText(String.valueOf(sum));
+        BigDecimal sum = cartOrderObservableList.stream().filter(CartOrder::isSelected).map(order -> {
+            BigDecimal price = new BigDecimal(String.valueOf(order.getGia()));
+            BigDecimal quantity = new BigDecimal(order.getSoLuong());
+            return price.multiply(quantity);
+        }).reduce(BigDecimal.ZERO, BigDecimal::add);
+        sumAllProduct.setText(sum.setScale(3, RoundingMode.HALF_UP).toString());
     }
 
     private void updateSumColumn() {
@@ -213,13 +222,7 @@ public class CarController implements Initializable {
 
             cartOrderObservableList.clear();
             while (resultSet.next()) {
-                CartOrder cartOrder = new CartOrder(
-                        resultSet.getInt("MaGH"),
-                        resultSet.getString("Anh"),
-                        resultSet.getString("Ten"),
-                        resultSet.getInt("Gia"),
-                        resultSet.getInt("SoLuong")
-                );
+                CartOrder cartOrder = new CartOrder(resultSet.getInt("MaGH"), resultSet.getString("Anh"), resultSet.getString("Ten"), resultSet.getBigDecimal("Gia"), resultSet.getInt("SoLuong"));
                 cartOrderObservableList.add(cartOrder);
             }
             tableView.setItems(cartOrderObservableList);
@@ -230,8 +233,7 @@ public class CarController implements Initializable {
 
     @FXML
     private void order() {
-        boolean hasSelectedItems = tableView.getItems().stream()
-                .anyMatch(CartOrder::getCheckBox);
+        boolean hasSelectedItems = tableView.getItems().stream().anyMatch(CartOrder::getCheckBox);
 
         if (hasSelectedItems) {
             int orderID = addOrder();
@@ -268,8 +270,7 @@ public class CarController implements Initializable {
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
 
-        String SQl = "insert into GioHang_DonHang(MaDH,MaGH)" +
-                "value (?,?)";
+        String SQl = "insert into GioHang_DonHang(MaDH,MaGH)" + "value (?,?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQl);
@@ -289,8 +290,7 @@ public class CarController implements Initializable {
         int maNguoiDung_1 = getMaNguoiDung_1();
         LocalDateTime time = LocalDateTime.now();
 
-        String SQL = "insert into DonHang(MaNguoiDung,NgayDat,TrangThai)" +
-                "value(?,?,'Chờ xác nhận')";
+        String SQL = "insert into DonHang(MaNguoiDung,NgayDat,TrangThai)" + "value(?,?,'Chờ xác nhận')";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);

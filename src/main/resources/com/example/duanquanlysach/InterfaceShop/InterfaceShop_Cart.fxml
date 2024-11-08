@@ -10,18 +10,18 @@
     </top>
     <bottom>
         <HBox prefHeight="47.0" prefWidth="482.0" spacing="30" style="-fx-padding: 10px">
-            <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="557.0" style="-fx-text-fill: red" text="₫">
+            <Label alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="557.0" style="-fx-text-fill: red" text="VND">
             <font>
                <Font size="23.0" />
             </font>
             <graphic>
-               <Label fx:id="sumAllProduct" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="150.0" style="-fx-text-fill: red" text="ToTal: 0.00  ">
+               <Label fx:id="sumAllProduct" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="211.0" style="-fx-text-fill: red" text="Tổng tiền: 0.000  ">
                   <font>
                      <Font size="25.0" />
                   </font>
                </Label>
             </graphic></Label>
-            <Button onAction= "#order" prefHeight="38.0" prefWidth="226.0" style="-fx-padding: 10px; -fx-background-color: #FF8C00; -fx-text-fill: white" text="Đặt hàng" />
+            <Button onAction="#order" prefHeight="38.0" prefWidth="226.0" style="-fx-padding: 10px; -fx-background-color: #FF8C00; -fx-text-fill: white" text="Đặt hàng" />
         </HBox>
     </bottom>
     <center>

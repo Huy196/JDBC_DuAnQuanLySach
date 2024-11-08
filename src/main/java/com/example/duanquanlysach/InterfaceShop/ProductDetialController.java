@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Random;
 
@@ -73,7 +74,7 @@ public class ProductDetialController {
         int maNguoiDung = getMaNguoiDung();
         String image = product.getAnh();
         String name = product.getTenSach();
-        int price = product.getGiaSach();
+        BigDecimal price = product.getGiaSach();
 
         String SQL = "INSERT INTO GioHang (MaNguoiDung,MaSach,Anh,Ten,Soluong,Gia)" +
                 " VALUES (?,?,?,?,?,?) ";
@@ -86,7 +87,7 @@ public class ProductDetialController {
             preparedStatement.setString(3,image);
             preparedStatement.setString(4,name);
             preparedStatement.setInt(5,quatity);
-            preparedStatement.setInt(6,price);
+            preparedStatement.setBigDecimal(6,price);
 
 
             int row = preparedStatement.executeUpdate();
