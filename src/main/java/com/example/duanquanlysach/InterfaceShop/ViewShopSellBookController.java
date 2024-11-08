@@ -3,6 +3,7 @@ package com.example.duanquanlysach.InterfaceShop;
 import ConnectionDatabase.ConnectionDatabase;
 import com.example.duanquanlysach.Main;
 import com.example.duanquanlysach.Product.Product;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,14 +21,20 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 public class ViewShopSellBookController implements Initializable {
     @FXML
     private FlowPane hBox;
 
+    @FXML
+    private Label quantity_product_car;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        quantityProductFromCar();
+
         loadProductData();
     }
 
@@ -53,6 +60,29 @@ public class ViewShopSellBookController implements Initializable {
         }
     }
 
+    public void quantityProductFromCar(){
+        try {
+            ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+            var connection = connectionDatabase.connection();
+
+            String SQL = "select count(*) as quantity from GioHang";
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL);
+
+            if (resultSet.next()){
+                int quantity = resultSet.getInt("quantity");
+                Platform.runLater(() -> quantity_product_car.setText(String.valueOf(quantity)));
+            }else {
+                Platform.runLater(() -> quantity_product_car.setText(""));;
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
     private VBox createProductBox(int id, String name, BigDecimal price, String imagePath) {
         ImageView imageView = new ImageView(new Image(imagePath));
         imageView.setFitHeight(210);
@@ -102,6 +132,7 @@ public class ViewShopSellBookController implements Initializable {
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setOnCloseRequest(event -> quantityProductFromCar());
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

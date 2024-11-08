@@ -2,11 +2,13 @@ package com.example.duanquanlysach.CartOrder;
 
 import ConnectionDatabase.ConnectionDatabase;
 import com.example.duanquanlysach.InterfaceShop.ProductDetialController;
+import com.example.duanquanlysach.InterfaceShop.ViewShopSellBookController;
 import com.example.duanquanlysach.Login.CurrentUser;
 import com.example.duanquanlysach.Main;
 import com.example.duanquanlysach.Product.Product;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -349,9 +351,15 @@ public class CarController implements Initializable {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setInt(1, maGH);
             int row = preparedStatement.executeUpdate();
+
             if (row > 0) {
                 Alert("Đã Xóa");
+                Platform.runLater(() -> {
+                    ViewShopSellBookController viewShopSellBookController = new ViewShopSellBookController();
+                    viewShopSellBookController.quantityProductFromCar();
+                });
             }
+
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

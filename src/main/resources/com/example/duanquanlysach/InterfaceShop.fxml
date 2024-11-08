@@ -22,6 +22,11 @@
                         <Image url="@../../../Image/cart.png" />
                     </image>
                 </ImageView>
+                <Label fx:id="quantity_product_car" alignment="CENTER" layoutX="1264.0" layoutY="19.0" lineSpacing="12.0" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: white;-fx-background-radius: 20px; -fx-border-radius: 20px;-fx-font-weight: bold; -fx-border-width: 3px ; -fx-text-fill: red;" styleClass="-fx-backgrounf" text="1" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+                </Label>
                 <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="1175.0" layoutY="22.0" onMouseClicked="#showProductOrder" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../Image/donhang.png" />

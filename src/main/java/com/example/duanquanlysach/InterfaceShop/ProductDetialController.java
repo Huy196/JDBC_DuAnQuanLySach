@@ -8,6 +8,7 @@ import com.example.duanquanlysach.Product.Product;
 import com.example.duanquanlysach.User.User;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -92,7 +93,12 @@ public class ProductDetialController {
 
             int row = preparedStatement.executeUpdate();
             if (row > 0){
+
                 Alert("Đã thêm vào đơn hàng !");
+                Platform.runLater(() -> {
+                    ViewShopSellBookController viewShopSellBookController = new ViewShopSellBookController();
+                    viewShopSellBookController.quantityProductFromCar();
+                });
             }
             connection.close();
         } catch (SQLException e) {
