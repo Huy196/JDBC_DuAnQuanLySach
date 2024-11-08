@@ -6,6 +6,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class Functoin_ProductCotroller {
 
@@ -61,14 +63,10 @@ public class Functoin_ProductCotroller {
     }
 
     public void saveProduct() throws SQLException {
-        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
-        var connection = connectionDatabase.connection();
-
-        String SQL = "insert into sach (Anh, TenSach, TacGia, NoiDung, NamXuatBan, MaNXB, GiaSach, SoLuong, MaLoaiSach ,TrangThai) " +
-                "value(?,?,?,?,?,?,?,?,?,?)";
-        PreparedStatement preparedStatement = null;
 
         try {
+
+
             if (nameProduct.getText().isEmpty()) {
                 highlightField(nameProduct);
                 nameProduct.requestFocus();
@@ -92,7 +90,7 @@ public class Functoin_ProductCotroller {
             }
             if (!isNumeric(priceProduct.getText())) {
                 highlightField(priceProduct);
-                thongBao("Giá sách phải là một số hợp lệ!");
+                Alert("Giá sách phải là một số hợp lệ!");
                 priceProduct.requestFocus();
                 return;
             } else {
@@ -100,73 +98,93 @@ public class Functoin_ProductCotroller {
             }
             if (!isNumeric(quantityProduct.getText())) {
                 highlightField(quantityProduct);
-                thongBao("Số lượng là một số hợp lệ!");
+                Alert("Số lượng là một số hợp lệ!");
                 quantityProduct.requestFocus();
                 return;
             } else {
                 clearHighlight(quantityProduct);
             }
             if (yearProduct.getValue() == null) {
-                thongBao("Vui lòng chọn năm xuất bản!");
+                Alert("Vui lòng chọn năm xuất bản!");
                 yearProduct.requestFocus();
                 return;
             }
             if (publishingHouseProduct.getValue() == null) {
-                thongBao("Vui lòng chọn nhà xuất bản!");
+                Alert("Vui lòng chọn nhà xuất bản!");
                 publishingHouseProduct.requestFocus();
                 return;
             }
             if (typeProduct.getValue() == null) {
-                thongBao("Vui lòng chọn loại sách!");
+                Alert("Vui lòng chọn loại sách!");
                 typeProduct.requestFocus();
                 return;
             }
 
             if (statusProduct.getValue() == null) {
-                thongBao("Vui lòng chọn trạng thái sách!");
+                Alert("Vui lòng chọn trạng thái sách!");
                 statusProduct.requestFocus();
                 return;
             }
 
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xác nhận cập nhật");
+            alert.setHeaderText("Bạn có chắc chắn muốn thêm sản phẩm này?");
 
-            int maLoaiSach = getMaLoaiSach((String) typeProduct.getValue());
-            int maNXB = getMaNXB((String) publishingHouseProduct.getValue());
+            Optional<ButtonType> result = alert.showAndWait();
 
 
-            String name = nameProduct.getText();
-            String author = authorProduct.getText();
-            String content = contentProduct.getText();
-            int year = Integer.parseInt(yearProduct.getValue().toString());
-            double price = Double.parseDouble(priceProduct.getText());
-            int quantity = Integer.parseInt(quantityProduct.getText());
-            String status = statusProduct.getValue().toString();
-            String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+                var connection = connectionDatabase.connection();
 
-            preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setString(1, image);
-            preparedStatement.setString(2, name);
-            preparedStatement.setString(3, author);
-            preparedStatement.setString(4, content);
-            preparedStatement.setInt(5, year);
-            preparedStatement.setInt(6, maNXB);
-            preparedStatement.setDouble(7, price);
-            preparedStatement.setInt(8, quantity);
-            preparedStatement.setInt(9, maLoaiSach);
-            preparedStatement.setString(10, status);
+                String SQL = "insert into sach (Anh, TenSach, TacGia, NoiDung, NamXuatBan, MaNXB, GiaSach, SoLuong, MaLoaiSach ,TrangThai) " +
+                        "value(?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement preparedStatement = null;
 
-            int row = preparedStatement.executeUpdate();
-            if (row > 0) {
-                System.out.println("Đã thêm thành công !");
-                nameProduct.clear();
-                authorProduct.clear();
-                contentProduct.clear();
-                priceProduct.clear();
-                quantityProduct.clear();
+
+
+
+                int maLoaiSach = getMaLoaiSach((String) typeProduct.getValue());
+                int maNXB = getMaNXB((String) publishingHouseProduct.getValue());
+
+
+                String name = nameProduct.getText();
+                String author = authorProduct.getText();
+                String content = contentProduct.getText();
+                int year = Integer.parseInt(yearProduct.getValue().toString());
+                double price = Double.parseDouble(priceProduct.getText());
+                int quantity = Integer.parseInt(quantityProduct.getText());
+                String status = statusProduct.getValue().toString();
+                String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
+
+                preparedStatement = connection.prepareStatement(SQL);
+                preparedStatement.setString(1, image);
+                preparedStatement.setString(2, name);
+                preparedStatement.setString(3, author);
+                preparedStatement.setString(4, content);
+                preparedStatement.setInt(5, year);
+                preparedStatement.setInt(6, maNXB);
+                preparedStatement.setDouble(7, price);
+                preparedStatement.setInt(8, quantity);
+                preparedStatement.setInt(9, maLoaiSach);
+                preparedStatement.setString(10, status);
+
+                int row = preparedStatement.executeUpdate();
+                if (row > 0) {
+                    Alert("Đã thêm thành công !");
+                    nameProduct.clear();
+                    authorProduct.clear();
+                    contentProduct.clear();
+                    priceProduct.clear();
+                    quantityProduct.clear();
+                }else {
+                    Alert("Đã hủy thêm sản phẩm!");
+                }
+                connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        connection.close();
     }
 
     private void highlightField(TextField field) {
@@ -226,51 +244,65 @@ public class Functoin_ProductCotroller {
     @FXML
     public void handAddOrUpdateProduct() {
         try {
-            ConnectionDatabase connectionDatabase = new ConnectionDatabase();
-            var connection = connectionDatabase.connection();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xác nhận cập nhật");
+            alert.setHeaderText("Bạn có chắc chắn muốn cập nhật sản phẩm này?");
 
-            int maLoaiSach = getMaLoaiSach((String) typeProduct.getValue());
-            int maNXB = getMaNXB((String) publishingHouseProduct.getValue());
+            Optional<ButtonType> result = alert.showAndWait();
 
-            String name = nameProduct.getText();
-            String author = authorProduct.getText();
-            String content = contentProduct.getText();
-            int year = Integer.parseInt(yearProduct.getValue().toString());
-            double price = Double.parseDouble(priceProduct.getText());
-            int quantity = Integer.parseInt(quantityProduct.getText());
-            String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
+            if (result.isPresent() && result.get() == ButtonType.OK) {
 
-            String SQL = "update sach set Anh = ?, TenSach = ?, TacGia = ?, NoiDung = ?, NamXuatBan = ?, MaNXB = ?, GiaSach = ?, SoLuong = ?, MaLoaiSach = ? where MaSach = ?";
+                ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+                var connection = connectionDatabase.connection();
 
-            PreparedStatement preparedStatement = null;
+                int maLoaiSach = getMaLoaiSach((String) typeProduct.getValue());
+                int maNXB = getMaNXB((String) publishingHouseProduct.getValue());
 
-            preparedStatement = connection.prepareStatement(SQL);
+                String name = nameProduct.getText();
+                String author = authorProduct.getText();
+                String content = contentProduct.getText();
+                int year = Integer.parseInt(yearProduct.getValue().toString());
+                double price = Double.parseDouble(priceProduct.getText());
+                int quantity = Integer.parseInt(quantityProduct.getText());
+                String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
 
-            preparedStatement.setString(1, image);
-            preparedStatement.setString(2, name);
-            preparedStatement.setString(3, author);
-            preparedStatement.setString(4, content);
-            preparedStatement.setInt(5, year);
-            preparedStatement.setInt(6, maNXB);
-            preparedStatement.setDouble(7, price);
-            preparedStatement.setInt(8, quantity);
-            preparedStatement.setInt(9, maLoaiSach);
-            preparedStatement.setInt(10, product.getMaSach());
+                String SQL = "update sach set Anh = ?, TenSach = ?, TacGia = ?, NoiDung = ?, NamXuatBan = ?, MaNXB = ?, GiaSach = ?, SoLuong = ?, MaLoaiSach = ? where MaSach = ?";
 
-            int row = preparedStatement.executeUpdate();
-            if (row > 0) {
-                System.out.println("Cập nhật sản phẩm thành công !");
-                nameProduct.clear();
-                authorProduct.clear();
-                contentProduct.clear();
-                priceProduct.clear();
-                quantityProduct.clear();
-                typeProduct.setValue(null);
-                yearProduct.setValue(null);
-                publishingHouseProduct.setValue(null);
-                imageProduct.setImage(null);
+                PreparedStatement preparedStatement = null;
+
+                preparedStatement = connection.prepareStatement(SQL);
+
+                preparedStatement.setString(1, image);
+                preparedStatement.setString(2, name);
+                preparedStatement.setString(3, author);
+                preparedStatement.setString(4, content);
+                preparedStatement.setInt(5, year);
+                preparedStatement.setInt(6, maNXB);
+                preparedStatement.setDouble(7, price);
+                preparedStatement.setInt(8, quantity);
+                preparedStatement.setInt(9, maLoaiSach);
+                preparedStatement.setInt(10, product.getMaSach());
+
+                int row = preparedStatement.executeUpdate();
+
+
+                if (row > 0) {
+                    System.out.println("Cập nhật sản phẩm thành công !");
+                    nameProduct.clear();
+                    authorProduct.clear();
+                    contentProduct.clear();
+                    priceProduct.clear();
+                    quantityProduct.clear();
+                    typeProduct.setValue(null);
+                    yearProduct.setValue(null);
+                    publishingHouseProduct.setValue(null);
+                    imageProduct.setImage(null);
+                }
+                connection.close();
+            } else {
+                Alert("Đã hủy cập nhật!");
+
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -292,14 +324,6 @@ public class Functoin_ProductCotroller {
         quantityProduct.setText(String.valueOf(product.getSoLuong()));
         typeProduct.setValue(getTenLoaiSach(product.getMaLoaiSach()));
 
-    }
-
-    public String setStatusProduct(Product product) {
-        this.product = product;
-        String currentStatus = product.getTrangThai();
-        String newStatus = currentStatus.equals("Còn hàng") ? "Còn hàng" : "Hết hàng";
-        product.setTrangThai(newStatus);
-        return newStatus;
     }
 
     public String getTenNXB(int maNXB) {
@@ -348,7 +372,7 @@ public class Functoin_ProductCotroller {
         return tenLoaiSach;
     }
 
-    private void thongBao(String name) {
+    private void Alert(String name) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Thông báo");
         alert.setHeaderText(null);
@@ -356,9 +380,10 @@ public class Functoin_ProductCotroller {
 
         alert.show();
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> alert.hide()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.8), event -> alert.hide()));
         timeline.setCycleCount(1);
         timeline.play();
+
     }
 
     private boolean isNumeric(String str) {

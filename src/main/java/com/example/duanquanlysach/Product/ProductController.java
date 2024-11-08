@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -63,10 +65,21 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
         idColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("maSach"));
         anhColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("Anh"));
         anhColumn.setCellFactory(column -> new TableCell<Product, String>() {
             private final ImageView imageView = new ImageView();
+
+            {
+                imageView.setFitWidth(120);
+                imageView.setFitHeight(120);
+                imageView.setPreserveRatio(true);
+                imageView.setSmooth(true);
+
+            }
+
 
             @Override
             protected void updateItem(String imagePath, boolean empty) {
@@ -74,11 +87,8 @@ public class ProductController implements Initializable {
                 if (empty || imagePath == null || imagePath.isEmpty()) {
                     setGraphic(null);
                 } else {
-                    Image image = new Image(imagePath, 100, 100, true, true);
-                    imageView.setFitHeight(100);
-                    imageView.setFitWidth(120);
+                    Image image = new Image(imagePath, true);
                     imageView.setImage(image);
-                    imageView.setPreserveRatio(true);
                     setGraphic(imageView);
                 }
             }
@@ -97,7 +107,7 @@ public class ProductController implements Initializable {
 
         functionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button editButton = new Button("Sửa");
-            private final Button editStatusButton = new Button("Cập nhật TT");
+            private final Button editStatusButton = new Button("Cập nhật");
 
             @Override
             protected void updateItem(String item, boolean empty) {

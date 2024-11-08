@@ -22,10 +22,10 @@
         </HBox>
         <HBox prefHeight="760.0" prefWidth="1291.0" spacing="20">
             <children>
-                <TableView fx:id="tableView" prefHeight="760.0" prefWidth="1247.0">
+                <TableView fx:id="tableView" style="-fx-cell-size: 50px;  -fx-padding: 5px; " prefHeight="760.0" prefWidth="1247.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="53.59999084472656" text="ID" />
-                        <TableColumn fx:id="anhColumn" prefWidth="126.0" text="Anh" />
+                        <TableColumn style="-fx-alignment: center" fx:id="anhColumn" prefWidth="126.0" text="Anh" />
                         <TableColumn fx:id="nameBookColumn" prefWidth="111.00001525878906" text="Tên Sách" />
                         <TableColumn fx:id="authorColumn" prefWidth="157.800048828125" text="Tác Giả" />
                         <TableColumn fx:id="contentColumn" prefWidth="191.60000610351562" text="Nội Dung" />

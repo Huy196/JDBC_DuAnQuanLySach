@@ -22,9 +22,9 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ViewShopSellBookController implements Initializable {
-    private Product product;
-    @FXML
-    private AnchorPane anchorPane;
+//    private Product product;
+//    @FXML
+//    private AnchorPane anchorPane;
 
     @FXML
     private FlowPane hBox;
@@ -48,9 +48,8 @@ public class ViewShopSellBookController implements Initializable {
                 int price = resultSet.getInt("GiaSach");
                 String imagePath = resultSet.getString("Anh");
 
-                // Tạo các thành phần cho sản phẩm
                 VBox productBox = createProductBox(id, name, price, imagePath);
-                hBox.getChildren().add(productBox); // Thêm sản phẩm vào hBox
+                hBox.getChildren().add(productBox);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -74,9 +73,7 @@ public class ViewShopSellBookController implements Initializable {
 
         Hyperlink detailLink = new Hyperlink("Chi tiết");
         detailLink.setOnAction(event -> showProductDetails(id));
-
-                VBox productBox = new VBox(imageView, nameLabel, priceLabel, detailLink);
-
+        VBox productBox = new VBox(imageView, nameLabel, priceLabel, detailLink);
 
         productBox.setStyle("-fx-border-color: #524e4e; -fx-padding: 10; -fx-background-color: #f9f9f9;");
 
@@ -100,7 +97,8 @@ public class ViewShopSellBookController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void showProductToCart(){
+
+    public void showProductToCart() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceShop_Cart.fxml"));
             Parent root = loader.load();
@@ -108,11 +106,12 @@ public class ViewShopSellBookController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void showProductOrder(){
+
+    public void showProductOrder() {
 
     }
 
