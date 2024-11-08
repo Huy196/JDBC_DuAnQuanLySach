@@ -28,6 +28,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -52,7 +53,7 @@ public class ProductController implements Initializable {
     @FXML
     private TableColumn<Product, Integer> ghostNXBColumn;
     @FXML
-    private TableColumn<Product, Double> priceBookColumn;
+    private TableColumn<Product, DecimalFormat> priceBookColumn;
     @FXML
     private TableColumn<Product, Integer> quantityColumn;
     @FXML
@@ -98,7 +99,7 @@ public class ProductController implements Initializable {
         contentColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("noiDung"));
         yearXBColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("namXB"));
         ghostNXBColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("maNXB"));
-        priceBookColumn.setCellValueFactory(new PropertyValueFactory<Product, Double>("giaSach"));
+        priceBookColumn.setCellValueFactory(new PropertyValueFactory<Product, DecimalFormat>("giaSach"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("soLuong"));
         codeBookColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("maLoaiSach"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("trangThai"));
@@ -207,7 +208,7 @@ public class ProductController implements Initializable {
                         resultSet.getString("NoiDung"),
                         resultSet.getInt("NamXuatBan"),
                         resultSet.getInt("MaNXB"),
-                        resultSet.getInt("GiaSach"),
+                        resultSet.getBigDecimal("GiaSach"),
                         resultSet.getInt("SoLuong"),
                         resultSet.getInt("MaLoaiSach"),
                         resultSet.getString("TrangThai")

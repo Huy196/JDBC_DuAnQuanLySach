@@ -15,6 +15,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,10 +23,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ViewShopSellBookController implements Initializable {
-//    private Product product;
-//    @FXML
-//    private AnchorPane anchorPane;
-
     @FXML
     private FlowPane hBox;
 
@@ -45,7 +42,7 @@ public class ViewShopSellBookController implements Initializable {
             while (resultSet.next()) {
                 int id = resultSet.getInt("MaSach");
                 String name = resultSet.getString("TenSach");
-                int price = resultSet.getInt("GiaSach");
+                BigDecimal price = resultSet.getBigDecimal("GiaSach");
                 String imagePath = resultSet.getString("Anh");
 
                 VBox productBox = createProductBox(id, name, price, imagePath);
@@ -56,7 +53,7 @@ public class ViewShopSellBookController implements Initializable {
         }
     }
 
-    private VBox createProductBox(int id, String name, int price, String imagePath) {
+    private VBox createProductBox(int id, String name, BigDecimal price, String imagePath) {
         ImageView imageView = new ImageView(new Image(imagePath));
         imageView.setFitHeight(210);
         imageView.setFitWidth(265);
@@ -64,7 +61,7 @@ public class ViewShopSellBookController implements Initializable {
         Label nameLabel = new Label(name);
         nameLabel.setStyle("-fx-font-size: 15px; -fx-font-weight: bold;");
 
-        Label priceLabel = new Label(price + "  ₫");
+        Label priceLabel = new Label(price + "  VND");
         priceLabel.setStyle("-fx-text-fill: red; -fx-font-size: 17px;");
 
         hBox.setPrefWrapLength(20);
@@ -138,7 +135,7 @@ public class ViewShopSellBookController implements Initializable {
                         resultSet.getString("NoiDung"),
                         resultSet.getInt("NamXuatBan"),
                         resultSet.getInt("MaNXB"),
-                        resultSet.getInt("GiaSach"),
+                        resultSet.getBigDecimal("GiaSach"),
                         resultSet.getInt("SoLuong"),
                         resultSet.getInt("MaLoaiSach"),
                         resultSet.getString("TrangThai")
