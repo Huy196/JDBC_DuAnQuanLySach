@@ -344,7 +344,7 @@ public class CarController implements Initializable {
             ConnectionDatabase connectionDatabase = new ConnectionDatabase();
             var connection = connectionDatabase.connection();
 
-            String SQL = "delete from donhang where MaGH = ?";
+            String SQL = "delete from GioHang where MaGH = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setInt(1, maGH);
@@ -352,6 +352,7 @@ public class CarController implements Initializable {
             if (row > 0) {
                 Alert("Đã Xóa");
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

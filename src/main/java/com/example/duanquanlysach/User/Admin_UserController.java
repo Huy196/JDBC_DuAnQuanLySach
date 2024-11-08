@@ -30,13 +30,13 @@ public class Admin_UserController implements Initializable {
     @FXML
     private TableColumn<User, String> imageUser;
     @FXML
-    private TableColumn <User, String> nameUser;
+    private TableColumn<User, String> nameUser;
     @FXML
     private TableColumn<User, String> passUser;
     @FXML
     private TableColumn<User, String> addressUser;
     @FXML
-    private TableColumn<User, String>phoneUser;
+    private TableColumn<User, String> phoneUser;
     @FXML
     private TableColumn<User, String> roleUser;
     @FXML
@@ -49,10 +49,18 @@ public class Admin_UserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        idUser.setCellValueFactory(new PropertyValueFactory<User, Integer> ("MaNguoiDung"));
+        idUser.setCellValueFactory(new PropertyValueFactory<User, Integer>("MaNguoiDung"));
         imageUser.setCellValueFactory(new PropertyValueFactory<User, String>("Anh"));
         imageUser.setCellFactory(column -> new TableCell<User, String>() {
             private final ImageView imageView = new ImageView();
+
+            {
+                imageView.setFitWidth(120);
+                imageView.setFitHeight(120);
+                imageView.setPreserveRatio(false);
+                imageView.setSmooth(true);
+
+            }
 
             @Override
             protected void updateItem(String imagePath, boolean empty) {
@@ -60,11 +68,8 @@ public class Admin_UserController implements Initializable {
                 if (empty || imagePath == null || imagePath.isEmpty()) {
                     setGraphic(null);
                 } else {
-                    Image image = new Image(imagePath, 100, 100, true, true);
-                    imageView.setFitHeight(100);
-                    imageView.setFitWidth(120);
+                    Image image = new Image(imagePath, true);
                     imageView.setImage(image);
-                    imageView.setPreserveRatio(true);
                     setGraphic(imageView);
                 }
             }
@@ -79,13 +84,13 @@ public class Admin_UserController implements Initializable {
         statusUser.setCellValueFactory(new PropertyValueFactory<User, String>("TrangThai"));
 
         loadDataUser();
-        functionUser.setCellFactory(param -> new TableCell<>(){
+        functionUser.setCellFactory(param -> new TableCell<>() {
             private final Button editButton = new Button("Sửa");
-            private final Button editStatusButton = new Button("Cập nhật TT");
+            private final Button editStatusButton = new Button("Cập nhật");
 
             @Override
-            protected void updateItem(String item, boolean empty){
-                super.updateItem(item,empty);
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
                 if (empty) {
                     setGraphic(null);
                     setText(null);
@@ -109,7 +114,8 @@ public class Admin_UserController implements Initializable {
             }
         });
     }
-    public void editInformationUser(User user){
+
+    public void editInformationUser(User user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin_interfaceUpdateInformationUser.fxml"));
             Parent root = loader.load();
@@ -126,50 +132,39 @@ public class Admin_UserController implements Initializable {
     }
 
 
-    public void editStatusUser(User user){
-        // kết nối data
+    public void editStatusUser(User user) {
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
 
-
-        // viết mã update trạng thái
         String SQL_TrangThai = "Update nguoidung set TrangThai= case when TrangThai = 'On' then 'Off' else 'On' end where MaNguoiDung = ? and Role != 'Quản Lý'";
-        PreparedStatement preparedStatement =null;
-        // nếu mà là 'on' -> off
-        //nếu 'off' -> on
+        PreparedStatement preparedStatement = null;
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Xác nhận thay đổi trạng thái");
         alert.setHeaderText(null);
-        alert.setContentText("Bạn có chắc chắn muốn thay đổi ?");
+        alert.setContentText("Bạn có chắc chắn muốn khóa tài khoản này ?");
 
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK){
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-               preparedStatement = connection.prepareStatement(SQL_TrangThai);
-               preparedStatement.setInt(1,user.getMaNguoiDung());
+                preparedStatement = connection.prepareStatement(SQL_TrangThai);
+                preparedStatement.setInt(1, user.getMaNguoiDung());
 
-               int row = preparedStatement.executeUpdate();
-               if (row > 0) {
-                   show("Cập nhật thành công !");
-               }else if (user.getRole().equalsIgnoreCase("Quản Lý")){
-                   show("Không thể cập nhật trạng thái của người quản lý");
-               } else {
-                   show("Cập nhật thất bại !");
-               }
+                int row = preparedStatement.executeUpdate();
+                if (row > 0) {
+                    show("Cập nhật thành công !");
+                } else if (user.getRole().equalsIgnoreCase("Quản Lý")) {
+                    show("Không thể cập nhật trạng thái của người quản lý");
+                } else {
+                    show("Cập nhật thất bại !");
+                }
                 connection.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
-        // viết 1 alert thông báo
-        // update data
-
-        // nếu đồng ý thì chạy ko thì ko có j xảy ra
-
+        }
     }
-    }
-
 
     public void loadDataUser() {
         try {
@@ -204,7 +199,8 @@ public class Admin_UserController implements Initializable {
             e.printStackTrace();
         }
     }
-    private void show( String text) {
+
+    private void show(String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cập nhật");
         alert.setHeaderText(null);

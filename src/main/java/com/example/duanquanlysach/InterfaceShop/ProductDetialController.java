@@ -60,7 +60,7 @@ public class ProductDetialController {
         contentProductDetail.setText(product.getNoiDung());
         yearProductDetail.setText(Integer.toString(product.getNamXB()));
         publishingHouseProductDetail.setText(productCotroller.getTenNXB(product.getMaNXB()));
-        priceProductDetail.setText((product.getGiaSach()) + " ₫");
+        priceProductDetail.setText((product.getGiaSach()) + " VND");
         typeProductDetail.setText(productCotroller.getTenLoaiSach(product.getMaLoaiSach()));
     }
 
