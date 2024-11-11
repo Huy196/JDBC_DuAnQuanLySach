@@ -15,6 +15,12 @@ public class CartOrder {
     private String hinhAnh;
     private boolean checkBox;
 
+    public CartOrder(String nameProduct, int quantity, BigDecimal price) {
+        this.tenSach = nameProduct;
+        this.soLuong = quantity;
+        this.gia = price;
+    }
+
     public int getMaSach() {
         return maSach;
     }
@@ -93,6 +99,7 @@ public class CartOrder {
     public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
+
 
 
 }
