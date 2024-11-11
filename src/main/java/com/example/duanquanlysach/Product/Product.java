@@ -41,6 +41,9 @@ public class Product {
         this.Anh = imagePath;
     }
 
+    public Product(String nameProduct, int quantity, BigDecimal price) {
+    }
+
     public String getAnh() {
         return Anh;
     }

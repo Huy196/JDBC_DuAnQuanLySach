@@ -17,4 +17,6 @@ module com.example.duanquanlysach {
     opens com.example.duanquanlysach.User to javafx.fxml;
     exports com.example.duanquanlysach.CartOrder;
     opens com.example.duanquanlysach.CartOrder to javafx.fxml;
+    exports com.example.duanquanlysach.Order;
+    opens com.example.duanquanlysach.Order to javafx.fxml;
 }

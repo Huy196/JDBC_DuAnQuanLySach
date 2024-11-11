@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="618.0" prefWidth="1373.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Order.OderController">
+    <children>
+        <Pane prefHeight="618.0" prefWidth="1344.0">
+            <children>
+                <HBox prefHeight="50.0" prefWidth="1118.0" spacing="20.0">
+                    <children>
+                        <Label onMouseClicked="#loadData" alignment="CENTER" prefHeight="50.0" prefWidth="150.0" text="Tất cả" />
+                        <Label onMouseClicked="#confirmOder" alignment="CENTER" prefHeight="52.0" prefWidth="150.0" text="Chờ xác nhận" />
+                        <Label onMouseClicked="#confirmedOder" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="150.0" text="Đã xác nhận" />
+                        <Label onMouseClicked="#cancelOrder" alignment="CENTER" prefHeight="50.0" prefWidth="149.0" text="Đã hủy" />
+                    </children>
+                </HBox>
+                <TableView fx:id="orderTableView" layoutX="2.0" layoutY="51.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="569.0" prefWidth="1341.0">
+                    <columns>
+                        <TableColumn fx:id="maDH" prefWidth="58.20001220703125" text="MaDH" />
+                        <TableColumn fx:id="date" prefWidth="129.39999389648438" text="Ngày tạo" />
+                        <TableColumn fx:id="nameUser" prefWidth="176.5999755859375" text="Tên khách hàng" />
+                        <TableColumn fx:id="productOrder" prefWidth="342.7999572753906" text="Sản phẩm" />
+                        <TableColumn fx:id="sum" prefWidth="159.79998779296875" text="Tổng tiền" />
+                        <TableColumn fx:id="status" prefWidth="132.00006103515625" text="Trạng thái" />
+                        <TableColumn fx:id="pay" prefWidth="136.5999755859375" text="Thanh toán" />
+                        <TableColumn fx:id="function" prefWidth="198.199951171875" text="Chức năng" />
+                    </columns>
+                </TableView>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
