@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="618.0" prefWidth="1373.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Order.OderController">
     <children>
@@ -9,10 +10,22 @@
             <children>
                 <HBox prefHeight="50.0" prefWidth="1118.0" spacing="20.0">
                     <children>
-                        <Label alignment="CENTER" onMouseClicked="#loadData" prefHeight="50.0" prefWidth="150.0" text="Tất cả" />
-                        <Label alignment="CENTER" onMouseClicked="#confirmOder" prefHeight="52.0" prefWidth="150.0" text="Chờ xác nhận" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#confirmedOder" prefHeight="50.0" prefWidth="150.0" text="Đã xác nhận" />
-                        <Label alignment="CENTER" onMouseClicked="#cancelOrder" prefHeight="50.0" prefWidth="149.0" text="Đã hủy" />
+                        <Label style="-fx-font-weight: bold;" alignment="CENTER" onMouseClicked="#loadData" prefHeight="50.0" prefWidth="150.0" text="Tất cả">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                        <Label style="-fx-font-weight: bold;" alignment="CENTER" onMouseClicked="#confirmOder" prefHeight="52.0" prefWidth="150.0" text="Chờ xác nhận">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                        <Label style="-fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#confirmedOder" prefHeight="50.0" prefWidth="150.0" text="Đã xác nhận">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                        <Label style="-fx-font-weight: bold;" alignment="CENTER" onMouseClicked="#cancelOrder" prefHeight="50.0" prefWidth="149.0" text="Đã hủy">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                     </children>
                 </HBox>
                 <TableView fx:id="orderTableView" layoutX="2.0" layoutY="51.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="569.0" prefWidth="1341.0">

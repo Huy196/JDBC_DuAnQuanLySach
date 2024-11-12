@@ -1,118 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<BorderPane prefHeight="529.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Product.Functoin_ProductCotroller">
+<BorderPane prefHeight="529.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Product.Functoin_ProductCotroller">
 
 
     <center>
-        <VBox alignment="CENTER_LEFT" prefHeight="530.0" prefWidth="493.0" spacing="10"
-              style="-fx-padding: 90px; -fx-background-color: linear-gradient(to bottom, mediumslateblue, pink) ">
-            <Button onAction="#handleChooseImage" alignment="CENTER" layoutX="112.0" layoutY="49.0" prefHeight="88.0" prefWidth="335.0"
-                    style="-fx-background-radius: 7; -fx-background-color: #eda500; -fx-text-fill: white"
-                    text="Chọn Ảnh"/>
-            <ImageView fx:id="imageProduct" fitHeight="274.0" fitWidth="336.0" nodeOrientation="INHERIT"
-                       preserveRatio="true" BorderPane.alignment="CENTER"/>
+        <VBox alignment="CENTER_LEFT" prefHeight="530.0" prefWidth="493.0" spacing="10" style="-fx-padding: 90px; -fx-background-color: linear-gradient(to bottom, mediumslateblue, pink) ">
+            <Button alignment="CENTER" layoutX="112.0" layoutY="49.0" onAction="#handleChooseImage" prefHeight="88.0" prefWidth="335.0" style="-fx-background-radius: 7; -fx-background-color: #eda500; -fx-text-fill: white" text="Chọn Ảnh" />
+            <ImageView fx:id="imageProduct" fitHeight="274.0" fitWidth="336.0" nodeOrientation="INHERIT" preserveRatio="true" BorderPane.alignment="CENTER" />
         </VBox>
     </center>
 
     <right>
-        <VBox alignment="CENTER_RIGHT" prefHeight="530.0" prefWidth="442.0" spacing="20"
-              style="-fx-padding: 30px; -fx-background-color: linear-gradient(to bottom, mediumslateblue, pink)">
+        <VBox alignment="CENTER_RIGHT" prefHeight="530.0" prefWidth="442.0" spacing="20" style="-fx-padding: 30px; -fx-background-color: linear-gradient(to bottom, mediumslateblue, pink)">
             <HBox prefHeight="31.0" prefWidth="373.0">
-                <Label prefHeight="26.0" prefWidth="148.0" style="-fx-font-size: 16" text="Tên sách :"/>
-                <TextField fx:id="nameProduct" prefHeight="31.0" prefWidth="287.0" style="-fx-font-size: 15; -fx-background-radius: 9"/>
+                <Label prefHeight="26.0" prefWidth="148.0" style="-fx-font-size: 16" text="Tên sách :" />
+                <TextField fx:id="nameProduct" prefHeight="31.0" prefWidth="287.0" style="-fx-font-size: 15; -fx-background-radius: 9" />
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Tác giả :"/>
-                <TextField fx:id="authorProduct" prefHeight="31.0" prefWidth="383.0" style="-fx-font-size: 15; -fx-background-radius: 9"/>
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Tác giả :" />
+                <TextField fx:id="authorProduct" prefHeight="31.0" prefWidth="383.0" style="-fx-font-size: 15; -fx-background-radius: 9" />
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Nội dung :"/>
-                <TextField fx:id="contentProduct" prefHeight="31.0" prefWidth="382.0" style="-fx-font-size: 15; -fx-background-radius: 9"/>
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Nội dung :" />
+                <TextField fx:id="contentProduct" prefHeight="31.0" prefWidth="382.0" style="-fx-font-size: 15; -fx-background-radius: 9" />
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Năm Xuất bản :"/>
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Năm Xuất bản :" />
                 <ComboBox fx:id="yearProduct" prefHeight="31.0" prefWidth="380.0" style="-fx-font-size: 15; -fx-background-radius: 9">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="2000"/>
-                            <String fx:value="2001"/>
-                            <String fx:value="2002"/>
-                            <String fx:value="2003"/>
-                            <String fx:value="2004"/>
-                            <String fx:value="2005"/>
-                            <String fx:value="2006"/>
-                            <String fx:value="2007"/>
-                            <String fx:value="2008"/>
-                            <String fx:value="2009"/>
-                            <String fx:value="2010"/>
-                            <String fx:value="2012"/>
-                            <String fx:value="2013"/>
-                            <String fx:value="2015"/>
+                            <String fx:value="2000" />
+                            <String fx:value="2001" />
+                            <String fx:value="2002" />
+                            <String fx:value="2003" />
+                            <String fx:value="2004" />
+                            <String fx:value="2005" />
+                            <String fx:value="2006" />
+                            <String fx:value="2007" />
+                            <String fx:value="2008" />
+                            <String fx:value="2009" />
+                            <String fx:value="2010" />
+                            <String fx:value="2012" />
+                            <String fx:value="2013" />
+                            <String fx:value="2015" />
 
                         </FXCollections>
                     </items>
                 </ComboBox>
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Nhà xuất bản :"/>
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Nhà xuất bản :" />
                 <ComboBox fx:id="publishingHouseProduct" prefHeight="31.0" prefWidth="377.0" style="-fx-font-size: 15; -fx-background-radius: 9">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Nhà xuất bản Kim Đồng"/>
-                            <String fx:value="Nhà xuất bản Trẻ"/>
-                            <String fx:value="Nhà xuất bản Giáo Dục"/>
-                            <String fx:value="Nhà xuất bản Văn Học"/>
-                            <String fx:value="Nhà xuất bản Tổng Hợp"/>
+                            <String fx:value="Nhà xuất bản Kim Đồng" />
+                            <String fx:value="Nhà xuất bản Trẻ" />
+                            <String fx:value="Nhà xuất bản Giáo Dục" />
+                            <String fx:value="Nhà xuất bản Văn Học" />
+                            <String fx:value="Nhà xuất bản Tổng Hợp" />
                         </FXCollections>
                     </items>
                 </ComboBox>
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Giá sách :"/>
-                <TextField fx:id="priceProduct" prefHeight="31.0" prefWidth="380.0" style="-fx-font-size: 15; -fx-background-radius: 9"/>
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Giá sách :" />
+                <TextField fx:id="priceProduct" prefHeight="31.0" prefWidth="379.0" style="-fx-font-size: 15; -fx-background-radius: 9" />
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Số lượng :"/>
-                <TextField fx:id="quantityProduct" prefHeight="31.0" prefWidth="375.0" style="-fx-font-size: 15; -fx-background-radius: 9"/>
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Số lượng :" />
+                <TextField fx:id="quantityProduct" prefHeight="31.0" prefWidth="380.0" style="-fx-font-size: 15; -fx-background-radius: 9" />
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Loại sách :"/>
-                <ComboBox fx:id="typeProduct" prefHeight="31.0" prefWidth="369.0" style="-fx-font-size: 15; -fx-background-radius: 9">
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Loại sách :" />
+                <ComboBox fx:id="typeProduct" prefHeight="31.0" prefWidth="380.0" style="-fx-font-size: 15; -fx-background-radius: 9">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Khoa học viễn tưởng"/>
-                            <String fx:value="Tiểu thuyết tình cảm"/>
-                            <String fx:value="Văn học cổ điển"/>
-                            <String fx:value="Truyện thiếu nhi"/>
-                            <String fx:value="Kinh doanh và đầu tư"/>
+                            <String fx:value="Khoa học viễn tưởng" />
+                            <String fx:value="Tiểu thuyết tình cảm" />
+                            <String fx:value="Văn học cổ điển" />
+                            <String fx:value="Truyện thiếu nhi" />
+                            <String fx:value="Kinh doanh và đầu tư" />
                         </FXCollections>
                     </items>
                 </ComboBox>
             </HBox>
             <HBox>
-                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Trạng thái :"/>
-                <ComboBox fx:id="statusProduct" prefHeight="31.0" prefWidth="369.0" style="-fx-font-size: 15; -fx-background-radius: 9">
+                <Label prefHeight="18.0" prefWidth="245.0" style="-fx-font-size: 16" text="Trạng thái :" />
+                <ComboBox fx:id="statusProduct" prefHeight="31.0" prefWidth="380.0" style="-fx-font-size: 15; -fx-background-radius: 9">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Còn hàng"/>
-                            <String fx:value="Hết hàng"/>
+                            <String fx:value="Còn hàng" />
+                            <String fx:value="Hết hàng" />
                         </FXCollections>
                     </items>
                 </ComboBox>
             </HBox>
             <HBox>
                 <HBox spacing="30">
-                    <Button onAction="#saveProduct" prefHeight="30.0" prefWidth="136.0"
-                            style=" -fx-background-color: #26aa99; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0, 0, 0); -fx-border-color: gray; -fx-border-radius: 7; -fx-background-radius: 7"
-                            text="Lưu"/>
+                    <Button onAction="#saveProduct" prefHeight="30.0" prefWidth="136.0" style=" -fx-background-color: #26aa99; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0, 0, 0); -fx-border-color: gray; -fx-border-radius: 7; -fx-background-radius: 7" text="Lưu" />
                 </HBox>
             </HBox>
 

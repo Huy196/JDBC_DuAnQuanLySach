@@ -7,21 +7,21 @@
 <AnchorPane prefHeight="599.0" prefWidth="1064.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.InterfaceShop.ViewShopSellBookController">
    <children>
       <Pane layoutX="8.0" layoutY="68.0" prefHeight="528.0" prefWidth="1046.0" />
-      <HBox prefHeight="42.0" prefWidth="700.0" spacing="30">
+      <HBox prefHeight="51.0" prefWidth="797.0" spacing="30">
          <children>
-            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="148.0" text="Tất cả" textAlignment="CENTER">
+            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="167.0" style="-fx-font-weight: bold;" text="Tất cả" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label alignment="BASELINE_CENTER" prefHeight="60.0" prefWidth="136.0" text="Chờ xác nhận">
+            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Chờ xác nhận">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="189.0" text="Đã thanh toán">
+            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Đã thanh toán">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label alignment="BASELINE_CENTER" prefHeight="45.0" prefWidth="136.0" text="Đã hủy">
+            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Đã hủy">
                <font>
                   <Font size="20.0" />
                </font>
