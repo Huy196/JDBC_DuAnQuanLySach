@@ -67,7 +67,6 @@ public class OderController implements Initializable {
             return new SimpleObjectProperty<>(order.sum());
         });
         status.setCellValueFactory(new PropertyValueFactory<CartOrder, String>("status"));
-        pay.setCellValueFactory(new PropertyValueFactory<Order, String>("pay"));
         loadData();
         function.setCellFactory(param -> new TableCell<>() {
             private final Button paidOrder = new Button("Xác nhận");
@@ -82,6 +81,7 @@ public class OderController implements Initializable {
                 } else {
                     Order order = getTableView().getItems().get(getIndex());
                     HBox hBox = new HBox(10);
+                    setStyle("-fx-alignment: CENTER;");
 
                     if ("Chờ thanh toán".equals(order.getStatus())) {
                         paidOrder.setVisible(false);
@@ -206,7 +206,7 @@ public class OderController implements Initializable {
     }
 
 
-    private void getProductInformation(Connection connection, int maDh, ResultSet resultSet, Order order) throws SQLException {
+    public void getProductInformation(Connection connection, int maDh, ResultSet resultSet, Order order) throws SQLException {
         try {
 
             String SQL_1 = "select GioHang.Ten, GioHang.SoLuong, GioHang.Gia from GioHang \n" +
@@ -305,7 +305,7 @@ public class OderController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Thông báo");
                 alert.setHeaderText(null);
-                alert.setContentText("Không có đơn hàng nào đang chờ xác nhận.");
+                alert.setContentText("Không có đơn hàng nào đang chờ thanh toán.");
                 alert.showAndWait();
             } else {
                 orders.clear();
@@ -343,7 +343,7 @@ public class OderController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Thông báo");
                 alert.setHeaderText(null);
-                alert.setContentText("Không có đơn hàng nào đang chờ xác nhận.");
+                alert.setContentText("Không có đơn hàng nào hủy.");
                 alert.showAndWait();
             } else {
                 orders.clear();

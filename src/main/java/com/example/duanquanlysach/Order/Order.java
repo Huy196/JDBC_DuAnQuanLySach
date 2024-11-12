@@ -41,6 +41,12 @@ public class Order {
         this.status = status;
     }
 
+    public Order(int maDh, Timestamp date,String status) {
+        this.maDH = maDh;
+        this.date = date;
+        this.status =status;
+    }
+
     public int getMaDH() {
         return maDH;
     }

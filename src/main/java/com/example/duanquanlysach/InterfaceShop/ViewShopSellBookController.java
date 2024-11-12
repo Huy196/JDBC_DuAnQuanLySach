@@ -109,7 +109,16 @@ public class ViewShopSellBookController implements Initializable {
     }
 
     public void showProductOrder() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Interface_Oder.fxml"));
+            Parent root = loader.load();
 
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Product getProductByMaSach(int maSach) {

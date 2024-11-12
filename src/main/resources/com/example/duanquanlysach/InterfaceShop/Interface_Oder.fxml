@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="645.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.Order.Order_User_Controller">
+    <children>
+        <Pane prefHeight="646.0" prefWidth="1042.0">
+            <children>
+                <HBox layoutY="108.0" prefHeight="60.0" prefWidth="1115.0" spacing="10">
+                    <children>
+                        <Label alignment="CENTER" onMouseClicked="#loadData" prefHeight="66.0" prefWidth="170.0" text="Tất cả" textAlignment="CENTER" />
+                        <Label alignment="CENTER" onMouseClicked="#loadDataOderWaitingForPayment" prefHeight="72.0" prefWidth="170.0" text="Chờ thanh toán" />
+                        <Label alignment="CENTER" onMouseClicked="#loadDataOderComplete" prefHeight="64.0" prefWidth="170.0" text="Hoàn thành" />
+                        <Label alignment="CENTER" onMouseClicked="#loadDataCancel" prefHeight="66.0" prefWidth="170.0" text="Hủy" />
+                    </children>
+                </HBox>
+                <TableView fx:id="orderTableView" layoutX="14.0" layoutY="168.0" prefHeight="465.0" prefWidth="1102.0">
+                    <columns>
+                        <TableColumn fx:id="maDH" prefWidth="61.80000305175781" text="MaDH" />
+                        <TableColumn fx:id="date" prefWidth="195.19998168945312" text="Ngày tạo" />
+                        <TableColumn fx:id="products" prefWidth="353.0" text="Sản phẩm" />
+                        <TableColumn fx:id="sum" prefWidth="127.79998779296875" text="Tổng tiền" />
+                        <TableColumn fx:id="status" prefWidth="157.2000732421875" text="Trạng thái" />
+                  <TableColumn fx:id="function" prefWidth="206.39996337890625" text="Chức năng" />
+                    </columns>
+                </TableView>
+            <Label alignment="CENTER" prefHeight="105.0" prefWidth="1042.0" text="Đơn Đặt Hàng">
+               <font>
+                  <Font size="51.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
