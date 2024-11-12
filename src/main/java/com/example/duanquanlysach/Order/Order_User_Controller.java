@@ -340,6 +340,7 @@ public class Order_User_Controller implements Initializable {
         preparedStatement1.setBigDecimal(4, selectedOrder.sum());
 
         int row_1 = preparedStatement1.executeUpdate();
+
     }
 
     private void handleTMDelivery(Order selectedOrder) {
@@ -376,7 +377,8 @@ public class Order_User_Controller implements Initializable {
 
         int row_1 = preparedStatement1.executeUpdate();
     }
-    private void updateOrder(Order order){
+
+    private void updateOrder(Order order) {
         ConnectionDatabase connectionDatabase = new ConnectionDatabase();
         var connection = connectionDatabase.connection();
         LocalDateTime time = LocalDateTime.now();
@@ -400,7 +402,6 @@ public class Order_User_Controller implements Initializable {
                     cashMethod(order, connection, time);
                 }
             }
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -430,7 +431,6 @@ public class Order_User_Controller implements Initializable {
                     cashMethod(selectedOrder, connection, time);
                 }
             }
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -446,5 +446,4 @@ public class Order_User_Controller implements Initializable {
         timeline.setCycleCount(1);
         timeline.play();
     }
-
 }

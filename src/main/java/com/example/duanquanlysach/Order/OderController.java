@@ -82,8 +82,10 @@ public class OderController implements Initializable {
                     Order order = getTableView().getItems().get(getIndex());
                     HBox hBox = new HBox(10);
                     setStyle("-fx-alignment: CENTER;");
-
-                    if ("Chờ thanh toán".equals(order.getStatus())) {
+                    if ("Đã thanh toán".equalsIgnoreCase(order.getStatus())) {
+                        paidOrder.setVisible(false);
+                        cancelOrder.setVisible(false);
+                    } else if ("Chờ thanh toán".equals(order.getStatus())) {
                         paidOrder.setVisible(false);
                         hBox.getChildren().add(cancelOrder);
                     } else if ("Hủy".equals(order.getStatus())) {
@@ -197,14 +199,11 @@ public class OderController implements Initializable {
 
                 getProductInformation(connection, maDh, resultSet, order);
             }
-
             orderTableView.setItems(orders);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 
     public void getProductInformation(Connection connection, int maDh, ResultSet resultSet, Order order) throws SQLException {
         try {
@@ -218,8 +217,6 @@ public class OderController implements Initializable {
             preparedStatement.setInt(1, maDh);
 
             ResultSet resultSet1 = preparedStatement.executeQuery();
-
-
             List<CartOrder> cartOrders = new ArrayList<>();
 
             while (resultSet1.next()) {
@@ -229,7 +226,6 @@ public class OderController implements Initializable {
 
                 cartOrders.add(new CartOrder(nameOrder, quantity, price));
             }
-
             order.setOrders(FXCollections.observableArrayList(cartOrders));
             orders.add(order);
         } catch (SQLException e) {
@@ -242,7 +238,6 @@ public class OderController implements Initializable {
         alert.setTitle("Cập nhật");
         alert.setHeaderText(null);
         alert.setContentText(text);
-
         alert.show();
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> alert.hide()));
@@ -259,11 +254,10 @@ public class OderController implements Initializable {
                     " join NguoiDung on DonHang.MaNguoiDung = NguoiDung.MaNguoiDung " +
                     " where DonHang.TrangThai = 'Chờ xác nhận'";
 
-
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQl);
 
-            if (!resultSet.isBeforeFirst()) { // No rows in result set
+            if (!resultSet.isBeforeFirst()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Thông báo");
                 alert.setHeaderText(null);
@@ -271,7 +265,6 @@ public class OderController implements Initializable {
                 alert.showAndWait();
             } else {
                 orders.clear();
-
                 while (resultSet.next()) {
                     int maDh = resultSet.getInt("MaDH");
                     Timestamp date = resultSet.getTimestamp("NgayDat");
@@ -283,6 +276,7 @@ public class OderController implements Initializable {
                 }
             }
             orderTableView.setItems(orders);
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -297,11 +291,10 @@ public class OderController implements Initializable {
                     " join NguoiDung on DonHang.MaNguoiDung = NguoiDung.MaNguoiDung " +
                     " where DonHang.TrangThai = 'Chờ thanh toán'";
 
-
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQl);
 
-            if (!resultSet.isBeforeFirst()) { // No rows in result set
+            if (!resultSet.isBeforeFirst()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Thông báo");
                 alert.setHeaderText(null);
@@ -321,6 +314,7 @@ public class OderController implements Initializable {
                 }
             }
             orderTableView.setItems(orders);
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -339,7 +333,7 @@ public class OderController implements Initializable {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQl);
 
-            if (!resultSet.isBeforeFirst()) { // No rows in result set
+            if (!resultSet.isBeforeFirst()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Thông báo");
                 alert.setHeaderText(null);
@@ -359,6 +353,7 @@ public class OderController implements Initializable {
                 }
             }
             orderTableView.setItems(orders);
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
