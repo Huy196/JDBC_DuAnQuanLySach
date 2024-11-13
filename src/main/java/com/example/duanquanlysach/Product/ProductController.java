@@ -78,9 +78,7 @@ public class ProductController implements Initializable {
                 imageView.setFitHeight(120);
                 imageView.setPreserveRatio(true);
                 imageView.setSmooth(true);
-
             }
-
 
             @Override
             protected void updateItem(String imagePath, boolean empty) {

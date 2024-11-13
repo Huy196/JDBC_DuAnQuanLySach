@@ -25,6 +25,8 @@ import java.util.*;
 public class ViewShopSellBookController implements Initializable {
     @FXML
     private FlowPane hBox;
+    @FXML
+    private TextField nameBook;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,6 +52,34 @@ public class ViewShopSellBookController implements Initializable {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void seachBook() {
+        hBox.getChildren().clear();
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        var connection = connectionDatabase.connection();
+        String query = "SELECT * FROM Sach where TrangThai = 'Còn hàng' and TenSach like ?";
+
+        String name_1 = nameBook.getText().trim();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" + name_1 + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("MaSach");
+                String name = resultSet.getString("TenSach");
+                BigDecimal price = resultSet.getBigDecimal("GiaSach");
+                String imagePath = resultSet.getString("Anh");
+
+                VBox productBox = createProductBox(id, name, price, imagePath);
+                hBox.getChildren().add(productBox);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
