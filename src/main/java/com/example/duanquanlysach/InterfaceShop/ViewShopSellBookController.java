@@ -210,6 +210,19 @@ public class ViewShopSellBookController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void interfaceUser(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("User_interfaceDisplayInformationUser.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
