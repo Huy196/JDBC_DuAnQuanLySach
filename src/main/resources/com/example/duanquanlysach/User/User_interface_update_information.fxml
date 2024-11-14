@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="536.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.User.UserController">
+<BorderPane prefHeight="536.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.User.Update_Information_User">
     <top>
-        <Label alignment="CENTER" prefHeight="97.0" prefWidth="438.0" text="Thông tin tài khoản" textAlignment="CENTER" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" prefHeight="97.0" prefWidth="438.0" text="Sửa thông tin" textAlignment="CENTER" BorderPane.alignment="CENTER">
             <font>
                 <Font size="36.0" />
             </font></Label>
@@ -20,35 +20,36 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="nameUser" layoutX="345.0" layoutY="44.0" prefHeight="40.0" prefWidth="374.0">
+                <TextField fx:id="nameUser" layoutX="345.0" layoutY="50.0" prefHeight="40.0" prefWidth="374.0">
                     <font>
                         <Font size="18.0" />
                     </font>
-                </Label>
+                </TextField>
                 <Label layoutX="237.0" layoutY="125.0" text="Địa Chỉ : ">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="address" layoutX="344.0" layoutY="119.0" prefHeight="40.0" prefWidth="371.0">
+                <TextField fx:id="addressUser" layoutX="344.0" layoutY="124.0" prefHeight="40.0" prefWidth="371.0">
                     <font>
                         <Font size="18.0" />
                     </font>
-                </Label>
+                </TextField>
                 <Label layoutX="237.0" layoutY="204.0" text="SĐT : ">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="phone" layoutX="344.0" layoutY="198.0" prefHeight="40.0" prefWidth="371.0">
+                <TextField fx:id="phoneUser" layoutX="344.0" layoutY="202.0" prefHeight="40.0" prefWidth="371.0">
                     <font>
                         <Font size="18.0" />
                     </font>
-                </Label>
+                </TextField>
 
-                <ImageView fx:id="imageUser" fitHeight="195.0" fitWidth="205.0" layoutX="22.0" layoutY="58.0" BorderPane.alignment="CENTER" />
+                <Button layoutX="61.0" layoutY="10.0" onAction="#clickImage" prefHeight="37.0" prefWidth="112.0" text="Chọn ảnh" />
+                <ImageView fx:id="imageUser" fitHeight="195.0" fitWidth="192.0" layoutX="22.0" layoutY="59.0" BorderPane.alignment="CENTER" />
 
-                <Button layoutX="283.0" layoutY="359.0" mnemonicParsing="false" onAction="#updateInformation" prefHeight="58.0" prefWidth="209.0" text="Sửa thông tin" textFill="#0000aa">
+                <Button onAction="#updateUser" layoutX="283.0" layoutY="359.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="209.0" text="Lưu" textFill="#0000aa">
                     <font>
                         <Font size="24.0" />
                     </font>
