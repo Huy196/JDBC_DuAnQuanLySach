@@ -22,6 +22,10 @@ public class User {
         this.trangThai = trangThai;
     }
 
+    public User() {
+
+    }
+
     public int getMaNguoiDung() {
         return maNguoiDung;
     }

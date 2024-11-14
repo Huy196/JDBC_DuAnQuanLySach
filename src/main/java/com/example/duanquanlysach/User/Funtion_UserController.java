@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -86,6 +87,8 @@ public class Funtion_UserController {
             int row = preparedStatement.executeUpdate();
             if (row > 0) {
                 Alert("Sửa thông tin thành công!");
+                Stage stage = (Stage) nameUser.getScene().getWindow();
+                stage.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
