@@ -28,12 +28,12 @@
         <TableView fx:id="tableView" prefHeight="424.0" prefWidth="967.0" BorderPane.alignment="CENTER">
             <columns>
                 <TableColumn fx:id="select" minWidth="0.0" prefWidth="47.99999922513962" text="Chọn" />
-                <TableColumn fx:id="image" prefWidth="278.59999084472656" text="Hình Ảnh" />
-                <TableColumn fx:id="name" prefWidth="165.00003051757812" text="Tên Sách" />
-                <TableColumn fx:id="price" prefWidth="119.0" text="Giá" />
-                <TableColumn fx:id="quantity" prefWidth="107.4000244140625" text="Số Lượng" />
-                <TableColumn fx:id="sum" prefWidth="138.800048828125" text="Thành Tiền" />
-                <TableColumn fx:id="deleteButton" minWidth="0.0" prefWidth="77.199951171875" text="Xóa" />
+                <TableColumn fx:id="image" prefWidth="301.20000076293945" text="Hình Ảnh" />
+                <TableColumn fx:id="name" prefWidth="205.20001220703125" text="Tên Sách" />
+                <TableColumn fx:id="price" prefWidth="111.79998779296875" text="Giá" />
+                <TableColumn fx:id="quantity" prefWidth="106.20001220703125" text="Số Lượng" />
+                <TableColumn fx:id="sum" prefWidth="150.60003662109375" text="Thành Tiền" />
+                <TableColumn fx:id="deleteButton" minWidth="0.0" prefWidth="70.0" text="Xóa" />
             </columns>
         </TableView>
     </center>
