@@ -27,7 +27,7 @@
                         <Image url="@../../../Image/donhang.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="1300.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView onMouseClicked="#interfaceUser" fitHeight="46.0" fitWidth="49.0" layoutX="1300.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../Image/img.png" />
                     </image>

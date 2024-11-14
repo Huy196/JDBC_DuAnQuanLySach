@@ -1,7 +1,6 @@
 package com.example.duanquanlysach.User;
 
 import ConnectionDatabase.ConnectionDatabase;
-import com.example.duanquanlysach.User.User;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -32,6 +31,8 @@ public class Funtion_UserController {
 
     @FXML
     private TextField phoneNumberUser;
+
+
 
     public void handleChooseImage() {
         FileChooser fileChooser = new FileChooser();
