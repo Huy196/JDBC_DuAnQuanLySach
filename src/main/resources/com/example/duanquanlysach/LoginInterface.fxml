@@ -8,13 +8,11 @@
    <children>
       <VBox layoutX="5.0" prefHeight="842.0" prefWidth="235.0" spacing="5">
          <children>
-            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="171.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Trang Chủ" />
-<!--            <Button alignment="BASELINE_CENTER" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Nhân viên" />-->
+            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="114.0" prefWidth="277.0" style="-fx-font-size: 20;" text="Trang Chủ" />
             <Button alignment="BASELINE_CENTER" onAction="#showProduct" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Sản phẩm" />
             <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" onAction="#showOrder" prefHeight="98.0" prefWidth="276.0" style="-fx-font-size: 20;" text="Đơn hàng" />
             <Button alignment="BASELINE_CENTER" nodeOrientation="LEFT_TO_RIGHT" onAction="#showUser" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Khách hàng" />
-<!--            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" prefHeight="98.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Hóa đơn" />-->
-            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="197.0" prefWidth="274.0" style="-fx-font-size: 20;" text="Đăng Xuất" />
+            <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="78.0" prefWidth="369.0" style="-fx-font-size: 20;" text="Đăng Xuất" />
          </children>
       </VBox>
       <VBox fx:id="contentArea" prefHeight="842.0" prefWidth="1256.0">
