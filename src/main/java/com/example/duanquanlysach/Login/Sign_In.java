@@ -41,7 +41,7 @@ public class Sign_In {
 
 
         try {
-            if (TenDangNhap.getText().isEmpty()) {
+            if (TenDangNhap.getText().isEmpty() || !tendangnhap.matches("^.{8,}$")) {
                 highlightField(TenDangNhap);
                 TenDangNhap.requestFocus();
                 return;
@@ -49,7 +49,7 @@ public class Sign_In {
                 clearHighlight(TenDangNhap);
             }
 
-            if (sdt.isEmpty() || !sdt.matches("\\d{10}")) {
+            if (sdt.isEmpty() || !sdt.matches("^0[3|5|7|8|9][0-9]{8}$")) {
                 highlightField(SDT);
                 SDT.requestFocus();
                 return;
@@ -65,7 +65,7 @@ public class Sign_In {
                 clearHighlight(DiaChi);
             }
 
-            if (matkhau.isEmpty()) {
+            if (matkhau.isEmpty() || !matkhau.matches("^.{8,}$")) {
                 highlightField(MatKhau);
                 MatKhau.requestFocus();
                 return;
