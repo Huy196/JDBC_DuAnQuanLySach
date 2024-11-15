@@ -92,7 +92,7 @@ public class ProductDetialController {
 
             int row = preparedStatement.executeUpdate();
             if (row > 0){
-                Alert("Đã thêm vào đơn hàng !");
+                Alert("Đã thêm vào giỏ hàng!");
                 Stage stage = (Stage) nameProductDetail.getScene().getWindow();
                 stage.close();
             }
