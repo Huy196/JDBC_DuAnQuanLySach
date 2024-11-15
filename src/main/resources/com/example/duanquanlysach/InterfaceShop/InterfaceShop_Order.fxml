@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="599.0" prefWidth="1064.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.InterfaceShop.ViewShopSellBookController">
+   <children>
+      <Pane layoutX="8.0" layoutY="68.0" prefHeight="528.0" prefWidth="1046.0" />
+      <HBox prefHeight="51.0" prefWidth="797.0" spacing="30">
+         <children>
+            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="167.0" style="-fx-font-weight: bold;" text="Tất cả" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Chờ xác nhận">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Đã thanh toán">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label alignment="BASELINE_CENTER" prefHeight="51.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Đã hủy">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

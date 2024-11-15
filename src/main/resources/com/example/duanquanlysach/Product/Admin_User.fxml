@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="1099.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.duanquanlysach.User.Admin_UserController">
+   <children>
+      <VBox prefHeight="91.0" prefWidth="590.0">
+         <children>
+            <HBox prefHeight="91.0" prefWidth="679.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="878.0" text="Quản Lý Người Dùng">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="tableView" prefHeight="585.0" prefWidth="878.0">
+        <columns>
+          <TableColumn fx:id="idUser" prefWidth="49.200013756752014" text="ID" />
+          <TableColumn fx:id="imageUser" prefWidth="124.80001068115234" text="Ảnh" />
+            <TableColumn fx:id="nameUser" prefWidth="158.0" text="Tên" />
+            <TableColumn fx:id="passUser" prefWidth="154.00003051757812" text="Mật Khẩu" />
+            <TableColumn fx:id="addressUser" prefWidth="120.4000244140625" text="Địa Chỉ" />
+            <TableColumn fx:id="phoneUser" prefWidth="97.20001220703125" text="SĐT" />
+            <TableColumn fx:id="roleUser" prefWidth="73.0" text="Role" />
+            <TableColumn fx:id="statusUser" prefWidth="74.20001220703125" text="Trạng Thái" />
+            <TableColumn fx:id="functionUser" prefWidth="248.5999755859375" text="Chức Năng" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>
