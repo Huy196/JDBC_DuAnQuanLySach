@@ -175,6 +175,9 @@ public class Functoin_ProductCotroller {
                     contentProduct.clear();
                     priceProduct.clear();
                     quantityProduct.clear();
+
+                    Stage stage = (Stage) nameProduct.getScene().getWindow();
+                    stage.close();
                 } else {
                     Alert("Đã hủy thêm sản phẩm!");
                 }
@@ -260,7 +263,7 @@ public class Functoin_ProductCotroller {
                 String author = authorProduct.getText();
                 String content = contentProduct.getText();
                 int year = Integer.parseInt(yearProduct.getValue().toString());
-                BigDecimal price = BigDecimal.valueOf(Long.parseLong(priceProduct.getText()));
+                BigDecimal price = new BigDecimal(priceProduct.getText());
                 int quantity = Integer.parseInt(quantityProduct.getText());
                 String image = imageProduct.getImage() != null ? imageProduct.getImage().getUrl() : "";
 
@@ -285,7 +288,7 @@ public class Functoin_ProductCotroller {
 
 
                 if (row > 0) {
-                    System.out.println("Cập nhật sản phẩm thành công !");
+                    Alert("Cập nhật sản phẩm thành công !");
                     nameProduct.clear();
                     authorProduct.clear();
                     contentProduct.clear();
