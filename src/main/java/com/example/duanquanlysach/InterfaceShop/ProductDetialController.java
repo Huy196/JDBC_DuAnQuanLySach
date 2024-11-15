@@ -93,6 +93,8 @@ public class ProductDetialController {
             int row = preparedStatement.executeUpdate();
             if (row > 0){
                 Alert("Đã thêm vào đơn hàng !");
+                Stage stage = (Stage) nameProductDetail.getScene().getWindow();
+                stage.close();
             }
             connection.close();
         } catch (SQLException e) {
